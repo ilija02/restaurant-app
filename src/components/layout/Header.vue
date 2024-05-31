@@ -1,6 +1,5 @@
-<!-- src/components/Header.vue -->
 <template>
-  <nav class="bg-gray-100 shadow-md">
+  <nav class="bg-gray-100 shadow-md relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex">
@@ -11,23 +10,41 @@
             </span>
           </div>
         </div>
-        <div class="flex">
-          <div class="hidden md:flex items-center space-x-4">
-            <router-link to="#" class="text-gray-800 hover:text-primary-500">Home</router-link>
-            <router-link to="#" class="text-gray-800 hover:text-primary-500">Menu</router-link>
-            <router-link to="#" class="text-gray-800 hover:text-primary-500">About</router-link>
-            <router-link to="#" class="text-gray-800 hover:text-primary-500">Gallery</router-link>
-            <router-link to="#" class="text-gray-800 hover:text-primary-500">My account</router-link>
+        <div class="hidden md:flex items-center space-x-4">
+          <router-link to="#" class="text-gray-800 hover:text-primary-500">Home</router-link>
+          <!-- Menu with submenu -->
+          <div class="relative">
+            <router-link to="#" class="text-gray-800 hover:text-primary-500" @mouseover="showSubmenu"
+              @mouseleave="hideSubmenu">Menu
+              <span class="text-primary-500">
+                <fa icon="caret-down" v-if="submenuOpen" />
+                <fa icon="caret-right" v-else />
+              </span>
+            </router-link>
+            <!-- Submenu -->
+            <div v-show="submenuOpen"
+              class="absolute top-full left-0 bg-white shadow-lg py-2 mt-1 w-40 rounded-md overflow-visible z-10"
+              @mouseover="showSubmenu" @mouseleave="hideSubmenu">
+              <router-link to="#"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Appetizers</router-link>
+              <router-link to="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Main
+                Courses</router-link>
+              <router-link to="#"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Desserts</router-link>
+            </div>
           </div>
-          <button type="button"
-            class="md:hidden text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500"
-            @click="toggleMenu">
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-          </button>
+          <!-- End of Menu with submenu -->
+          <router-link to="#" class="text-gray-800 hover:text-primary-500">About</router-link>
+          <router-link to="#" class="text-gray-800 hover:text-primary-500">Gallery</router-link>
+          <router-link to="#" class="text-gray-800 hover:text-primary-500">My account</router-link>
         </div>
+        <button type="button"
+          class="md:hidden text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500"
+          @click="toggleMenu">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
       </div>
     </div>
     <!-- Mobile menu, show/hide based on menuOpen state. -->
@@ -35,8 +52,27 @@
       <div class="px-2 pt-4 pb-3 space-y-2 sm:px-3 shadow-primary-500 shadow-md">
         <router-link to="#"
           class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">Home</router-link>
-        <router-link to="#"
-          class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">Menu</router-link>
+        <!-- Mobile submenu -->
+        <div class="relative z-10" @click="toggleSubmenu">
+          <router-link to="#"
+            class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">Menu
+            <span class="text-primary-500">
+              <fa icon="caret-down" v-if="submenuOpen" />
+              <fa icon="caret-right" v-else />
+            </span>
+          </router-link>
+          <!-- Submenu -->
+          <div v-if="submenuOpen"
+            class="absolute top-full left-0 bg-white shadow-lg py-2 mt-1 w-full rounded-md overflow-visible">
+            <router-link to="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500"
+              @click="hideSubmenu">Appetizers</router-link>
+            <router-link to="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Main
+              Courses</router-link>
+            <router-link to="#"
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Desserts</router-link>
+          </div>
+        </div>
+        <!-- End of Mobile submenu -->
         <router-link to="#"
           class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">About</router-link>
         <router-link to="#"
@@ -56,12 +92,27 @@ export default {
   data() {
     return {
       menuOpen: false,
-      logo
+      submenuOpen: false,
+      logo,
+      timeoutId: -1
     };
   },
   methods: {
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
+    },
+    showSubmenu() {
+      if (this.timeoutId !== -1) {
+        clearTimeout(this.timeoutId);
+        this.timeoutId = -1;
+      }
+      this.submenuOpen = true;
+    },
+    hideSubmenu() {
+      this.timeoutId = setTimeout(() => this.submenuOpen = false, 100);
+    },
+    toggleSubmenu() {
+      this.submenuOpen = !this.submenuOpen;
     }
   }
 };
