@@ -5,3 +5,7 @@
 
 /* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
  */
+
+.btn-action {
+    @apply px-6 py-3 rounded-full text-white bg-primary-500 hover:bg-primary-400
+}

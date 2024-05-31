@@ -1,56 +1,34 @@
+<!-- src/components/Menu.vue -->
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Menu</h1>
-    <div>
-      <h2 class="text-xl font-semibold mb-2">Appetizers</h2>
-      <ul class="list-disc list-inside">
-        <li
-          v-for="dish in filteredDishes('Appetizers')"
-          :key="dish.id"
-          class="mb-1"
-        >
-          {{ dish.name }} - ${{ dish.price }}
-        </li>
-      </ul>
+  <section id="menu" class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Menu</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <MenuItem v-for="dish in dishes" :key="dish.id" :dish="dish" />
+      </div>
     </div>
-    <div>
-      <h2 class="text-xl font-semibold mb-2">Main Courses</h2>
-      <ul class="list-disc list-inside">
-        <li
-          v-for="dish in filteredDishes('Main Courses')"
-          :key="dish.id"
-          class="mb-1"
-        >
-          {{ dish.name }} - ${{ dish.price }}
-        </li>
-      </ul>
-    </div>
-    <div>
-      <h2 class="text-xl font-semibold mb-2">Desserts</h2>
-      <ul class="list-disc list-inside">
-        <li
-          v-for="dish in filteredDishes('Desserts')"
-          :key="dish.id"
-          class="mb-1"
-        >
-          {{ dish.name }} - ${{ dish.price }}
-        </li>
-      </ul>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import MenuItem from './MenuItem.vue';
 
 export default {
-  computed: {
-    ...mapState(["dishes"]),
-    filteredDishes() {
-      return (category) => {
-        return this.dishes.filter((dish) => dish.category === category);
-      };
-    },
+  name: "Menu",
+  components: {
+    MenuItem
+  },
+  data() {
+    return {
+      dishes: [
+        { id: 1, name: "Spring Rolls", category: "Appetizers", price: 5, image: "@/assets/spring-rolls.jpg" },
+        { id: 2, name: "Sweet and Sour Pork", category: "Main Courses", price: 10, image: "@/assets/sweet-sour-pork.jpg" },
+        { id: 3, name: "Fried Ice Cream", category: "Desserts", price: 6, image: "@/assets/fried-ice-cream.jpg" },
+        // Add more dishes as needed
+      ],
+    };
   },
 };
 </script>
+
+<style scoped></style>

@@ -7,6 +7,7 @@ export default {
         // Primary Color
         primary: {
           50: "#FDE8E8", // Lighter Shade
+          400: "#D82929",
           500: "#B22222", // Main Color
           900: "#3E0E0E", // Darker Shade
         },
