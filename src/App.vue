@@ -1,9 +1,15 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <Header />
+  <router-view />
 </template>
 
-<style scoped></style>
+<script>
+import Header from "./components/Header.vue";
+
+export default {
+  name: "App",
+  components: {
+    Header,
+  },
+};
+</script>
