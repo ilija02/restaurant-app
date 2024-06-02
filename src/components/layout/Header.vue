@@ -1,5 +1,6 @@
 <template>
-  <nav class="bg-gray-100 shadow-md relative">
+  <!-- TODO Extract menu items into data section to clear up the template -->
+  <nav class="bg-gray-100 shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
         <div class="flex">
@@ -11,10 +12,10 @@
           </div>
         </div>
         <div class="hidden md:flex items-center space-x-4">
-          <router-link to="#" class="text-gray-800 hover:text-primary-500">Home</router-link>
+          <router-link to="/" class="text-gray-800 hover:text-primary-500">Home</router-link>
           <!-- Menu with submenu -->
           <div class="relative">
-            <router-link to="#" class="text-gray-800 hover:text-primary-500" @mouseover="showSubmenu"
+            <router-link to="/menu" class="text-gray-800 hover:text-primary-500" @mouseover="showSubmenu"
               @mouseleave="hideSubmenu">Menu
               <span class="text-primary-500">
                 <fa icon="caret-down" v-if="submenuOpen" />
@@ -25,11 +26,12 @@
             <div v-show="submenuOpen"
               class="absolute top-full left-0 bg-white shadow-lg py-2 mt-1 w-40 rounded-md overflow-visible z-10"
               @mouseover="showSubmenu" @mouseleave="hideSubmenu">
-              <router-link to="#"
+              <router-link to="/menu/appetizers"
                 class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Appetizers</router-link>
-              <router-link to="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Main
+              <router-link to="/menu/main-courses"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Main
                 Courses</router-link>
-              <router-link to="#"
+              <router-link to="/menu/desserts"
                 class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Desserts</router-link>
             </div>
           </div>
@@ -50,7 +52,7 @@
     <!-- Mobile menu, show/hide based on menuOpen state. -->
     <div v-if="menuOpen" class="md:hidden transition ease-in-out duration-150">
       <div class="px-2 pt-4 pb-3 space-y-2 sm:px-3 shadow-primary-500 shadow-md">
-        <router-link to="#"
+        <router-link to="/"
           class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">Home</router-link>
         <!-- Mobile submenu -->
         <div class="relative z-10" @click="toggleSubmenu">
@@ -64,11 +66,13 @@
           <!-- Submenu -->
           <div v-if="submenuOpen"
             class="absolute top-full left-0 bg-white shadow-lg py-2 mt-1 w-full rounded-md overflow-visible">
-            <router-link to="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500"
+            <router-link to="/menu/appetizers"
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500"
               @click="hideSubmenu">Appetizers</router-link>
-            <router-link to="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Main
+            <router-link to="/menu/main-courses"
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Main
               Courses</router-link>
-            <router-link to="#"
+            <router-link to="/menu/desserts"
               class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Desserts</router-link>
           </div>
         </div>
