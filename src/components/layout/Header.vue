@@ -12,11 +12,11 @@
           </div>
         </div>
         <div class="hidden md:flex items-center space-x-4">
-          <router-link to="/" class="text-gray-800 hover:text-primary-500">Home</router-link>
+          <router-link to="/" class="text-gray-800 hover:text-primary-500">{{ $t("nav.home") }}</router-link>
           <!-- Menu with submenu -->
           <div class="relative">
             <router-link to="/menu" class="text-gray-800 hover:text-primary-500" @mouseover="showSubmenu"
-              @mouseleave="hideSubmenu">Menu
+              @mouseleave="hideSubmenu">{{ $t("nav.menu") }}
               <span class="text-primary-500">
                 <fa icon="caret-down" v-if="submenuOpen" />
                 <fa icon="caret-right" v-else />
@@ -27,18 +27,20 @@
               class="absolute top-full left-0 bg-white shadow-lg py-2 mt-1 w-40 rounded-md overflow-visible z-10"
               @mouseover="showSubmenu" @mouseleave="hideSubmenu">
               <router-link to="/menu/appetizers"
-                class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Appetizers</router-link>
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">{{ $t("menu.appetizers")
+                }}</router-link>
               <router-link to="/menu/main-courses"
-                class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Main
-                Courses</router-link>
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">{{ $t("menu.main")
+                }}</router-link>
               <router-link to="/menu/desserts"
-                class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Desserts</router-link>
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">{{ $t("menu.desserts")
+                }}</router-link>
             </div>
           </div>
           <!-- End of Menu with submenu -->
-          <router-link to="#" class="text-gray-800 hover:text-primary-500">About</router-link>
-          <router-link to="#" class="text-gray-800 hover:text-primary-500">Gallery</router-link>
-          <router-link to="#" class="text-gray-800 hover:text-primary-500">My account</router-link>
+          <router-link to="#" class="text-gray-800 hover:text-primary-500">{{ $t("nav.about") }}</router-link>
+          <router-link to="#" class="text-gray-800 hover:text-primary-500">{{ $t("nav.gallery") }}</router-link>
+          <router-link to="#" class="text-gray-800 hover:text-primary-500">{{ $t("nav.account") }}</router-link>
         </div>
         <button type="button"
           class="md:hidden text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500"
@@ -52,12 +54,13 @@
     <!-- Mobile menu, show/hide based on menuOpen state. -->
     <div v-if="menuOpen" class="md:hidden transition ease-in-out duration-150">
       <div class="px-2 pt-4 pb-3 space-y-2 sm:px-3 shadow-primary-500 shadow-md">
-        <router-link to="/"
-          class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">Home</router-link>
+        <router-link to="/" class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">{{
+          $t("nav.home") }}</router-link>
         <!-- Mobile submenu -->
         <div class="relative z-10" @click="toggleSubmenu">
           <router-link to="#"
-            class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">Menu
+            class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">{{ $t("nav.menu")
+            }}
             <span class="text-primary-500">
               <fa icon="caret-down" v-if="submenuOpen" />
               <fa icon="caret-right" v-else />
@@ -67,24 +70,25 @@
           <div v-if="submenuOpen"
             class="absolute top-full left-0 bg-white shadow-lg py-2 mt-1 w-full rounded-md overflow-visible">
             <router-link to="/menu/all" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500"
-              @click="hideSubmenu">All categories</router-link>
+              @click="hideSubmenu">{{ $t("menu.all") }}</router-link>
             <router-link to="/menu/appetizers"
-              class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500"
-              @click="hideSubmenu">Appetizers</router-link>
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500" @click="hideSubmenu">{{
+                $t("menu.appetizers") }}</router-link>
             <router-link to="/menu/main-courses"
-              class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Main
-              Courses</router-link>
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">{{ $t("menu.main")
+              }}</router-link>
             <router-link to="/menu/desserts"
-              class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">Desserts</router-link>
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500">{{ $t("menu.desserts")
+              }}</router-link>
           </div>
         </div>
         <!-- End of Mobile submenu -->
-        <router-link to="#"
-          class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">About</router-link>
-        <router-link to="#"
-          class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">Gallery</router-link>
-        <router-link to="#" class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">My
-          account</router-link>
+        <router-link to="#" class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">{{
+          $t("nav.about") }}</router-link>
+        <router-link to="#" class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">{{
+          $t('nav.gallery') }}</router-link>
+        <router-link to="#" class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">{{
+          $t('nav.account') }}</router-link>
       </div>
     </div>
   </nav>

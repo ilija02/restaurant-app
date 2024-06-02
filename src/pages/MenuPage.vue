@@ -6,20 +6,20 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 ">
             <div
                 class="flex flex-col md:flex-row md:justify-between md:border-b-2 md:border-dashed md:border-gray-500  md:pb-2 mb-8">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Menu</h2>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ $t("menu.subtitle") }}</h2>
 
                 <!-- Sorting and Searching -->
                 <div class="flex flex-col md:flex-row md:justify-end flex-grow">
-                    <div class="flex items-center space-x-4 md:mr-2 w-full md:w-auto">
-                        <label for="sort" class="text-gray-700">Sort by:</label>
+                    <div class="flex items-center space-x-2 md:mr-2 w-full md:w-auto">
+                        <label for="sort" class="text-gray-700">{{ $t("menu.sort") }}:</label>
                         <select id="sort" v-model="sortKey"
                             class="p-2 border border-gray-300 rounded-md w-full md:w-auto">
-                            <option value="name">Name</option>
-                            <option value="price">Price</option>
+                            <option value="name">{{ $t("menu.name") }}</option>
+                            <option value="price">{{ $t("menu.price") }}</option>
                         </select>
                     </div>
                     <div class="flex items-center space-x-4 mt-4 md:mt-0 w-full md:w-auto">
-                        <input type="text" v-model="searchQuery" placeholder="Find dishes..."
+                        <input type="text" v-model="searchQuery" :placeholder="$t('menu.find') + '...'"
                             class="p-2 border border-gray-300 rounded-md w-full" />
                     </div>
                 </div>
@@ -52,7 +52,7 @@
         <div class="fixed bottom-4 right-4">
             <button class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 shadow-black shadow-sm"
                 @click="downloadMenu">
-                Download Menu
+                {{ $t("menu.download") }}
             </button>
         </div>
     </div>
