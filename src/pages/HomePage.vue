@@ -19,13 +19,10 @@
 
 <script>
 import Header from '../components/layout/Header.vue';
-import Menu from '../components/Menu.vue';
-
 export default {
   name: "HomePage",
   components: {
     Header,
-    Menu,
   },
 };
 </script>
