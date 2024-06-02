@@ -1,0 +1,32 @@
+export const dishes = [
+  {
+    id: 1,
+    name: "Spring Rolls",
+    category: "Appetizers",
+    price: 5,
+    image: "/img/food/spring-rolls.jpg",
+    smallPortion: 5,
+    largePortion: 8,
+    rating: 4.2,
+  },
+  {
+    id: 2,
+    name: "Sweet and Sour Pork",
+    category: "Main Courses",
+    price: 10,
+    image: "/img/food/sweet-sour-pork.jpg",
+    smallPortion: 10,
+    largePortion: 15,
+    rating: 4.5,
+  },
+  {
+    id: 3,
+    name: "Fried Ice Cream",
+    category: "Desserts",
+    price: 6,
+    image: "/img/food/fried-ice-cream.jpg",
+    smallPortion: 6,
+    largePortion: 9,
+    rating: 4.0,
+  },
+];

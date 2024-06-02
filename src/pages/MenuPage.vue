@@ -1,25 +1,29 @@
 <template>
     <div class="min-h-screen bg-gray-100">
+        <!-- Header -->
         <Header />
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Menu</h2>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 ">
+            <div
+                class="flex flex-col md:flex-row md:justify-between md:border-b-2 md:border-dashed md:border-gray-500  md:pb-2 mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Menu</h2>
 
-            <!-- Sorting and Searching -->
-            <div class="flex flex-col md:flex-row md:justify-between mb-8">
-                <div class="flex items-center space-x-4">
-                    <label for="sort" class="text-gray-700">Sort by:</label>
-                    <select id="sort" v-model="sortKey" class="p-2 border border-gray-300 rounded-md">
-                        <option value="name">Name</option>
-                        <option value="price">Price</option>
-                    </select>
-                </div>
-                <div class="flex items-center space-x-4 mt-4 md:mt-0">
-                    <input type="text" v-model="searchQuery" placeholder="Search..."
-                        class="p-2 border border-gray-300 rounded-md" />
+                <!-- Sorting and Searching -->
+                <div class="flex flex-col md:flex-row md:justify-end flex-grow">
+                    <div class="flex items-center space-x-4 md:mr-2 w-full md:w-auto">
+                        <label for="sort" class="text-gray-700">Sort by:</label>
+                        <select id="sort" v-model="sortKey"
+                            class="p-2 border border-gray-300 rounded-md w-full md:w-auto">
+                            <option value="name">Name</option>
+                            <option value="price">Price</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center space-x-4 mt-4 md:mt-0 w-full md:w-auto">
+                        <input type="text" v-model="searchQuery" placeholder="Find dishes..."
+                            class="p-2 border border-gray-300 rounded-md w-full" />
+                    </div>
                 </div>
             </div>
-
             <!-- Category Tabs -->
             <div class="flex justify-center mb-8">
                 <button v-for="category in categories" :key="category" @click="selectCategory(category)" :class="{
@@ -35,6 +39,9 @@
             <!-- Menu Items -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <MenuItem v-for="dish in filteredAndSortedDishes" :key="dish.id" :dish="dish" />
+            </div>
+            <div v-if="filteredAndSortedDishes.length == 0" class="text-lg flex justify-center">
+                <p>No such dish found</p>
             </div>
         </div>
 
@@ -55,7 +62,8 @@
 import MenuItem from "@/components/MenuItem.vue";
 import DishDetails from "@/components/DishDetails.vue";
 import Header from "@/components/layout/Header.vue";
-import { jsPDF } from "jspdf";
+import { dishes } from '@/data/dishes.js';
+import downloadMenu from '@/util/menu.js'
 
 export default {
     name: "MenuPage",
@@ -66,48 +74,17 @@ export default {
     },
     data() {
         return {
-            selectedCategory: "all", // Get category from URL
+            selectedCategory: "all",
             categories: ["All", "Appetizers", "Main Courses", "Desserts"],
             sortKey: "name",
             searchQuery: "",
-            dishes: [
-                {
-                    id: 1,
-                    name: "Spring Rolls",
-                    category: "Appetizers",
-                    price: 5,
-                    image: "/img/food/spring-rolls.jpg",
-                    smallPortion: 5,
-                    largePortion: 8,
-                    rating: 4.2,
-                },
-                {
-                    id: 2,
-                    name: "Sweet and Sour Pork",
-                    category: "Main Courses",
-                    price: 10,
-                    image: "/img/food/sweet-sour-pork.jpg",
-                    smallPortion: 10,
-                    largePortion: 15,
-                    rating: 4.5,
-                },
-                {
-                    id: 3,
-                    name: "Fried Ice Cream",
-                    category: "Desserts",
-                    price: 6,
-                    image: "/img/food/fried-ice-cream.jpg",
-                    smallPortion: 6,
-                    largePortion: 9,
-                    rating: 4.0,
-                },
-            ],
+            dishes: dishes,
             selectedDish: null,
         };
     },
     computed: {
         filteredAndSortedDishes() {
-            console.log("Selected Category: ", this.selectedCategory);
+            // console.log("Selected Category: ", this.selectedCategory);
             let filteredDishes = this.dishes.filter(
                 (dish) =>
                     (this.selectedCategory === "all" ||
@@ -128,8 +105,6 @@ export default {
     },
     updated: function () {
         this.selectedCategory = this.$route.params.category || "all";
-        console.log("Selected Category: ", this.selectedCategory);
-
     },
     methods: {
         viewDetails(dish) {
@@ -149,24 +124,7 @@ export default {
         categoryToSlug(category) {
             return category.toLowerCase().replace(/\s+/g, "-");
         },
-        downloadMenu() {
-            const doc = new jsPDF();
-            doc.setFontSize(18);
-            doc.text("Menu", 14, 22);
-
-            let yPosition = 30;
-            this.dishes.forEach((dish, index) => {
-                if (index > 0 && index % 20 === 0) {
-                    doc.addPage();
-                    yPosition = 30;
-                }
-                doc.setFontSize(12);
-                doc.text(`${dish.name} - $${dish.price}`, 14, yPosition);
-                yPosition += 10;
-            });
-
-            doc.save("menu.pdf");
-        },
+        downloadMenu, // from util/menu.js
     },
 };
 </script>
