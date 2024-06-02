@@ -48,7 +48,7 @@
       </div>
     </div>
     <!-- Mobile menu, show/hide based on menuOpen state. -->
-    <div v-if="menuOpen" class="md:hidden">
+    <div v-if="menuOpen" class="md:hidden transition ease-in-out duration-150">
       <div class="px-2 pt-4 pb-3 space-y-2 sm:px-3 shadow-primary-500 shadow-md">
         <router-link to="#"
           class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">Home</router-link>

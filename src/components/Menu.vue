@@ -21,9 +21,9 @@ export default {
   data() {
     return {
       dishes: [
-        { id: 1, name: "Spring Rolls", category: "Appetizers", price: 5, image: "@/assets/spring-rolls.jpg" },
-        { id: 2, name: "Sweet and Sour Pork", category: "Main Courses", price: 10, image: "@/assets/sweet-sour-pork.jpg" },
-        { id: 3, name: "Fried Ice Cream", category: "Desserts", price: 6, image: "@/assets/fried-ice-cream.jpg" },
+        { id: 1, name: "Spring Rolls", category: "Appetizers", price: 5, image: "img/food/spring-rolls.jpg" },
+        { id: 2, name: "Sweet and Sour Pork", category: "Main Courses", price: 10, image: "img/food/sweet-sour-pork.jpg" },
+        { id: 3, name: "Fried Ice Cream", category: "Desserts", price: 6, image: "img/food/fried-ice-cream.jpg" },
         // Add more dishes as needed
       ],
     };

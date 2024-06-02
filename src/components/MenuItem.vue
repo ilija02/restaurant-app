@@ -1,7 +1,6 @@
 <template>
     <div class="bg-white rounded-lg shadow-md p-4">
-        <img src="@/assets/spring-rolls.jpg" alt=""
-            class="h-40 w-full object-cover rounded-lg shadow-inner shadow-black">
+        <img v-bind:src="dish.image" alt="" class="h-40 w-full object-cover rounded-lg shadow-inner shadow-black">
         <div class="mt-4">
             <div class="flex flex-row justify-between items-end">
                 <div>
