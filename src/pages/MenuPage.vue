@@ -66,7 +66,7 @@ export default {
     },
     data() {
         return {
-            selectedCategory: this.$route.params.category || "All", // Get category from URL
+            selectedCategory: "all", // Get category from URL
             categories: ["All", "Appetizers", "Main Courses", "Desserts"],
             sortKey: "name",
             searchQuery: "",
@@ -127,7 +127,9 @@ export default {
         },
     },
     updated: function () {
-        this.selectedCategory = this.$route.params.category || "All";
+        this.selectedCategory = this.$route.params.category || "all";
+        console.log("Selected Category: ", this.selectedCategory);
+
     },
     methods: {
         viewDetails(dish) {

@@ -11,7 +11,11 @@
         <h2 class="text-xl md:text-3xl text-white font-light mt-4 hidden md:block">
           Experience Authentic Flavors and Culinary Masterpieces
         </h2>
-        <button class="btn-action mt-6">Discover our menu</button>
+
+        <router-link to="/menu">
+          <button class="btn-action mt-6">
+            Discover our menu</button>
+        </router-link>
       </div>
     </header>
   </div>

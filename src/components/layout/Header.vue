@@ -66,6 +66,8 @@
           <!-- Submenu -->
           <div v-if="submenuOpen"
             class="absolute top-full left-0 bg-white shadow-lg py-2 mt-1 w-full rounded-md overflow-visible">
+            <router-link to="/menu/all" class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500"
+              @click="hideSubmenu">All categories</router-link>
             <router-link to="/menu/appetizers"
               class="block px-4 py-2 text-gray-800 hover:bg-gray-200 hover:text-primary-500"
               @click="hideSubmenu">Appetizers</router-link>
