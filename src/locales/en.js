@@ -1,4 +1,7 @@
 export default {
+  restaurant: {
+    name: "Chinese Restaurant",
+  },
   nav: {
     home: "Home",
     menu: "Menu",
@@ -6,6 +9,7 @@ export default {
     gallery: "Gallery",
     account: "My Account",
   },
+  'add to cart': "Add to cart",
   home: {
     welcome: "Welcome to our Chinese restaurant",
     subtitle: "Discover authentic flavors and culinary secrets of China",

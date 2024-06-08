@@ -2,7 +2,9 @@ export const dishes = [
   {
     id: 1,
     name: "Spring Rolls",
+    name_sr: "Prolećne Rolnice",
     category: "Appetizers",
+    category_sr: "Predjelo",
     price: 5,
     image: "/img/food/spring-rolls.jpg",
     smallPortion: 5,
@@ -12,7 +14,9 @@ export const dishes = [
   {
     id: 2,
     name: "Sweet and Sour Pork",
+    name_sr: "Slatka i Kisela Svinjetina",
     category: "Main Courses",
+    category_sr: "Glavno Jelo",
     price: 10,
     image: "/img/food/sweet-sour-pork.jpg",
     smallPortion: 10,
@@ -22,7 +26,9 @@ export const dishes = [
   {
     id: 3,
     name: "Fried Ice Cream",
+    name_sr: "Pečeni Sladoled",
     category: "Desserts",
+    category_sr: "Dezert",
     price: 6,
     image: "/img/food/fried-ice-cream.jpg",
     smallPortion: 6,

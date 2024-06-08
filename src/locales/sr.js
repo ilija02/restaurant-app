@@ -1,4 +1,14 @@
 export default {
+  restaurant: {
+    name: "Kineski Restoran",
+  },
+  categories: {
+    All: "Sve",
+    Appetizers: "Predjela",
+    'Main Courses': "Glavna Jela",
+    Desserts: "Dezerti"
+  },
+  'add to cart': "Dodaj u korpu",
   nav: {
     home: "Početna",
     menu: "Jelovnik",

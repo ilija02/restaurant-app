@@ -32,7 +32,7 @@
                     'bg-gray-200 text-gray-700':
                         selectedCategory !== categoryToSlug(category),
                 }" class="px-4 py-2 mx-2 rounded-full focus:outline-none hover:bg-primary-500 hover:text-white">
-                    {{ category }}
+                    {{ getTranslationCategory(category) }}
                 </button>
             </div>
 
@@ -101,10 +101,20 @@ export default {
             return filteredDishes;
         },
     },
+    mounted: function () {
+        this.selectedCategory = this.$route.params.category || "all";
+    },
     updated: function () {
         this.selectedCategory = this.$route.params.category || "all";
     },
     methods: {
+        getTranslationCategory(category) {
+            if (this.$i18n.locale === 'en') {
+                return category;
+            }
+
+            return this.$t("categories." + category);
+        },
         viewDetails(dish) {
             this.selectedDish = dish;
         },

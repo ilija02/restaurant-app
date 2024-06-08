@@ -7,7 +7,7 @@
           <div class="flex-shrink-0 flex items-center">
             <img class="h-8 w-auto" :src="logo" alt="Chinese Restaurant Logo" />
             <span class="ml-3 text-2xl font-semibold text-primary-500">
-              <router-link to="/">Chinese Restaurant</router-link>
+              <router-link to="/">{{ $t("restaurant.name") }}</router-link>
             </span>
           </div>
         </div>

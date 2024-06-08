@@ -4,8 +4,8 @@
         <div class="mt-4">
             <div class="flex flex-row justify-between items-end">
                 <div>
-                    <h3 class="text-xl font-semibold text-gray-900">{{ dish.name }}</h3>
-                    <p class="text-gray-600">{{ dish.category }}</p>
+                    <h3 class="text-xl font-semibold text-gray-900">{{ dish_lang.name }}</h3>
+                    <p class="text-gray-600">{{ dish_lang.category }}</p>
                     <div class="flex items-center space-x-1 mt-1">
                         <fa v-for="star in 5" :key="star"
                             :icon="['fas', star <= dish.rating ? 'star' : 'star-half-alt']" class="text-yellow-400">
@@ -16,7 +16,7 @@
                 <button
                     class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300"
                     @click="addToCart">
-                    <fa :icon="['fas', 'cart-plus']" /> <span class="text-white text-sm pl-2">Add to cart</span>
+                    <fa :icon="['fas', 'cart-plus']" /> <span class="text-white text-sm pl-2">{{ $t("add to cart") }}</span>
                 </button>
             </div>
         </div>
@@ -29,6 +29,16 @@ export default {
     props: {
         dish: {
             required: true
+        }
+    },
+    computed: {
+        dish_lang() {
+            const ret = {
+                name: this.$i18n.locale === 'en' ? this.dish.name : this.dish.name_sr,
+                category: this.$i18n.locale === 'en' ? this.dish.category : this.dish.category_sr
+            };
+
+            return ret;
         }
     },
     methods: {
