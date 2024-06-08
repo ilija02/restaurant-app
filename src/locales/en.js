@@ -12,6 +12,7 @@ export default {
     menu: "View Menu",
     best_dishes: "Most popular dishes",
     deals: "Special offers",
+    testimonials: "Testimonials",
   },
   menu: {
     subtitle: "Our Offer",

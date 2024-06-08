@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-600 text-accent-50 text-sm py-1 flex justify-between items-center px-4 md:px-8">
+  <div class="bg-gray-600 text-white text-sm py-1 flex justify-between items-center px-4 md:px-8">
     <div>
       <span class="hidden md:inline">
         <fa icon="home" />

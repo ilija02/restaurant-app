@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col">
-        <h1 class="text-4xl text-center mb-8 relative">
+        <h1 class="text-3xl text-center mb-8 relative">
             <span class="bg-primary-50 text-primary-500 py-1 px-4 rounded-lg">
                 <fa icon="trophy" /> {{ $t("home.best_dishes") }}
             </span>

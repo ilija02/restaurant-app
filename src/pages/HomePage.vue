@@ -24,6 +24,9 @@
       <TopDishes class="mx-4" />
     </div>
     <DealsComponent />
+    <TestimonialsComponent />
+    <!-- So the language switch doesn't interfere with page content -->
+    <div class="h-6"></div>
   </div>
 </template>
 
@@ -31,12 +34,15 @@
 import Header from '@/components/layout/Header.vue';
 import TopDishes from '@/components/TopDishes.vue'
 import DealsComponent from '@/components/DealsComponent.vue'
+import TestimonialsComponent from '@/components/TestimonialsComponent.vue'
+
 export default {
   name: "HomePage",
   components: {
     Header,
     TopDishes,
-    DealsComponent
+    DealsComponent,
+    TestimonialsComponent
   },
 };
 </script>

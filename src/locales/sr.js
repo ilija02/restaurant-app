@@ -12,6 +12,7 @@ export default {
     menu: "Pogledajte jelovnik",
     best_dishes: "Najpopularnija jela",
     deals: "Posebne akcije",
+    testimonials: "Utisci",
   },
   menu: {
     subtitle: "Naša ponuda",

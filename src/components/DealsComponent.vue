@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white rounded-lg shadow-md p-6">
-        <h1 class="text-4xl text-center mb-8 relative">
+        <h1 class="text-3xl text-center mb-8 relative">
             <span class="text-primary-500 py-1 px-4 rounded-lg">
                 <fa icon="percent" /> {{ $t("home.deals") }}
             </span>
