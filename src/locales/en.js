@@ -11,6 +11,7 @@ export default {
     subtitle: "Discover authentic flavors and culinary secrets of China",
     menu: "View Menu",
     best_dishes: "Most popular dishes",
+    deals: "Special offers",
   },
   menu: {
     subtitle: "Our Offer",

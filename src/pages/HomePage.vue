@@ -20,21 +20,23 @@
         </router-link>
       </div>
     </header>
-    <div id="top-dishes" class="px-4 py-6 border-t-4 border-black">
+    <div id="top-dishes" class="px-4 py-6 border-b-2 border-dashed border-gray-200">
       <TopDishes class="mx-4" />
     </div>
+    <DealsComponent />
   </div>
 </template>
 
 <script>
 import Header from '@/components/layout/Header.vue';
 import TopDishes from '@/components/TopDishes.vue'
-
+import DealsComponent from '@/components/DealsComponent.vue'
 export default {
   name: "HomePage",
   components: {
     Header,
-    TopDishes
+    TopDishes,
+    DealsComponent
   },
 };
 </script>

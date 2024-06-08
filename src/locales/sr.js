@@ -11,6 +11,7 @@ export default {
     subtitle: "Otkrijte autentične ukuse i kulinarske tajne Kine",
     menu: "Pogledajte jelovnik",
     best_dishes: "Najpopularnija jela",
+    deals: "Posebne akcije",
   },
   menu: {
     subtitle: "Naša ponuda",

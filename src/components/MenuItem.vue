@@ -6,7 +6,7 @@
                 <div>
                     <h3 class="text-xl font-semibold text-gray-900">{{ dish.name }}</h3>
                     <p class="text-gray-600">{{ dish.category }}</p>
-                    <div class="flex items-center space-x-1">
+                    <div class="flex items-center space-x-1 mt-1">
                         <fa v-for="star in 5" :key="star"
                             :icon="['fas', star <= dish.rating ? 'star' : 'star-half-alt']" class="text-yellow-400">
                         </fa>
