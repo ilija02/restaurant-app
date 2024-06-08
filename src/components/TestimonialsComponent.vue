@@ -1,7 +1,7 @@
 <template>
-    <div class="bg-gray-100 rounded-lg shadow-md p-6">
+    <div class="bg-gray-100 rounded-lg">
         <h1 class="text-3xl text-center mb-8 relative">
-            <span class="bg-primary-50 text-primary-500 py-1 px-4 rounded-lg">
+            <span class=" text-primary-500 py-1 px-4 rounded-lg">
                 <fa icon="quote-left" /> {{ $t("home.testimonials") }}
             </span>
         </h1>

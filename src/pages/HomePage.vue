@@ -24,7 +24,10 @@
       <TopDishes class="mx-4" />
     </div>
     <DealsComponent />
-    <TestimonialsComponent />
+    <div class="px-4 py-6">
+      <TestimonialsComponent />
+
+    </div>
     <!-- So the language switch doesn't interfere with page content -->
     <div class="h-6"></div>
   </div>
