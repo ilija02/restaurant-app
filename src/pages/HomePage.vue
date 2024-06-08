@@ -20,15 +20,21 @@
         </router-link>
       </div>
     </header>
+    <div id="top-dishes" class="px-4 py-6 border-t-4 border-black">
+      <TopDishes class="mx-4" />
+    </div>
   </div>
 </template>
 
 <script>
-import Header from '../components/layout/Header.vue';
+import Header from '@/components/layout/Header.vue';
+import TopDishes from '@/components/TopDishes.vue'
+
 export default {
   name: "HomePage",
   components: {
     Header,
+    TopDishes
   },
 };
 </script>

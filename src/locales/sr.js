@@ -10,6 +10,7 @@ export default {
     welcome: "Dobrodošli u naš kineski restoran",
     subtitle: "Otkrijte autentične ukuse i kulinarske tajne Kine",
     menu: "Pogledajte jelovnik",
+    best_dishes: "Najpopularnija jela",
   },
   menu: {
     subtitle: "Naša ponuda",

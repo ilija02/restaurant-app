@@ -10,6 +10,7 @@ export default {
     welcome: "Welcome to our Chinese restaurant",
     subtitle: "Discover authentic flavors and culinary secrets of China",
     menu: "View Menu",
+    best_dishes: "Most popular dishes",
   },
   menu: {
     subtitle: "Our Offer",
