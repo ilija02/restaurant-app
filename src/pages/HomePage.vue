@@ -20,6 +20,10 @@
         </router-link>
       </div>
     </header>
+    <div class="px-12 py-6 border-b-2 border-gray-200 border-dashed">
+      <AboutComponent />
+
+    </div>
     <div id="top-dishes" class="px-4 py-6 border-b-2 border-dashed border-gray-200">
       <TopDishes class="mx-4" />
     </div>
@@ -38,14 +42,15 @@ import Header from '@/components/layout/Header.vue';
 import TopDishes from '@/components/TopDishes.vue'
 import DealsComponent from '@/components/DealsComponent.vue'
 import TestimonialsComponent from '@/components/TestimonialsComponent.vue'
-
+import AboutComponent from '@/components/AboutComponent.vue'
 export default {
   name: "HomePage",
   components: {
     Header,
     TopDishes,
     DealsComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
+    AboutComponent
   },
 };
 </script>

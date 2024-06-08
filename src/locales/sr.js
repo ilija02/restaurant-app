@@ -26,4 +26,9 @@ export default {
     name: "Naziv",
     price: "Cena",
   },
+  about: {
+    title: "O nama",
+    description:
+      "U našem restoranu posvećeni smo pružanju izuzetnog doživljaja uživanja u hrani našim gostima. Naš tim talentovanih kuvara kombinuje tradicionalne recepte sa inovativnim tehnikama kako bi stvorili jela koja su ukusna i nezaboravna. Ponosni smo što koristimo najfinije sastojke kako bismo osigurali da svako jelo bude vrhunskog kvaliteta. Bez obzira da li dolazite na ručak ili večeru, radujemo se što ćemo vas dočekati i podeliti sa vama našu strast prema sjajnoj hrani.",
+  },
 };

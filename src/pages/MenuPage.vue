@@ -60,7 +60,6 @@
 
 <script>
 import MenuItem from "@/components/MenuItem.vue";
-import DishDetails from "@/components/DishDetails.vue";
 import Header from "@/components/layout/Header.vue";
 import { dishes } from '@/data/dishes.js';
 import downloadMenu from '@/util/menu.js'
@@ -69,7 +68,6 @@ export default {
     name: "MenuPage",
     components: {
         MenuItem,
-        DishDetails,
         Header,
     },
     data() {

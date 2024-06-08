@@ -40,7 +40,7 @@ export default {
                 return {
                     ...testimonial,
                     comment: this.$i18n.locale === 'en' ? testimonial.comment_en : testimonial.comment_sr,
-                    position: this.$i18n.locale === "en" ? testimonial.position_en : testimonial.position_sr // Corrected
+                    position: this.$i18n.locale === "en" ? testimonial.position_en : testimonial.position_sr
                 };
             });
             return ret;
