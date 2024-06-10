@@ -40,6 +40,8 @@ export default {
     name: "Naziv",
     price: "Cena",
     rating: "Rejting",
+    large_portion: "Velika Porcija",
+    small_portion: "Mala Porcija",
   },
   about: {
     address_tel_title: "Lokacija i Kontakt",

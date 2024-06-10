@@ -1,10 +1,14 @@
 <template>
     <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300">
-        <img v-bind:src="dish.image" alt="" class="h-40 w-full object-cover rounded-lg shadow-inner shadow-black">
+        <router-link :to="{ name: 'DishDetail', params: { id: dish.id } }">
+            <img v-bind:src="dish.image" alt="" class="h-40 w-full object-cover rounded-lg shadow-inner shadow-black">
+        </router-link>
         <div class="mt-4">
             <div class="flex flex-row justify-between items-end">
                 <div>
-                    <h3 class="text-xl font-semibold text-gray-900">{{ dish_lang.name }}</h3>
+                    <router-link :to="{ name: 'DishDetail', params: { id: dish.id } }">
+                        <h3 class="text-xl font-semibold text-gray-900">{{ dish_lang.name }}</h3>
+                    </router-link>
                     <p class="text-gray-600">{{ dish_lang.category }}</p>
                     <div>
                         <div class="flex items-center space-x-1 mt-1">

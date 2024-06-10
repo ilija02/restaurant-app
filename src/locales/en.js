@@ -34,6 +34,8 @@ export default {
     name: "Name",
     price: "Price",
     rating: "Rating",
+    large_portion: "Large Portion",
+    small_portion: "Small Portion",
   },
 
   about: {
