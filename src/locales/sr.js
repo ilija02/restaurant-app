@@ -9,6 +9,7 @@ export default {
     Desserts: "Dezerti"
   },
   'add to cart': "Dodaj u korpu",
+  footer_text: "Odsek za softversko inženjerstvo Elektrotehničkog fakulteta Univerziteta u Beogradu",
   nav: {
     home: "Početna",
     menu: "Jelovnik",
@@ -37,6 +38,10 @@ export default {
     price: "Cena",
   },
   about: {
+    address_tel_title: "Lokacija i Kontakt",
+    address: "Vojvode Stepe 37, Beograd",
+    address_title: "Adresa",
+    prizes_title: "Nagrade i Postignuća",
     title: "O nama",
     description:
       "U našem restoranu posvećeni smo pružanju izuzetnog doživljaja uživanja u hrani našim gostima. Naš tim talentovanih kuvara kombinuje tradicionalne recepte sa inovativnim tehnikama kako bi stvorili jela koja su ukusna i nezaboravna. Ponosni smo što koristimo najfinije sastojke kako bismo osigurali da svako jelo bude vrhunskog kvaliteta. Bez obzira da li dolazite na ručak ili večeru, radujemo se što ćemo vas dočekati i podeliti sa vama našu strast prema sjajnoj hrani.",

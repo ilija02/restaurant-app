@@ -38,7 +38,7 @@
             </div>
           </div>
           <!-- End of Menu with submenu -->
-          <router-link to="#" class="text-gray-800 hover:text-primary-500">{{ $t("nav.about") }}</router-link>
+          <router-link to="/about" class="text-gray-800 hover:text-primary-500">{{ $t("nav.about") }}</router-link>
           <router-link to="#" class="text-gray-800 hover:text-primary-500">{{ $t("nav.gallery") }}</router-link>
           <router-link to="#" class="text-gray-800 hover:text-primary-500">{{ $t("nav.account") }}</router-link>
         </div>

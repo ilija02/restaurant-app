@@ -10,6 +10,7 @@ export default {
     account: "My Account",
   },
   'add to cart': "Add to cart",
+  footer_text: "Department of Software Engineering, Faculty of Electrical Engineering, University of Belgrade",
   home: {
     welcome: "Welcome to our Chinese restaurant",
     subtitle: "Discover authentic flavors and culinary secrets of China",
@@ -32,6 +33,10 @@ export default {
   },
 
   about: {
+    address_tel_title: "Location and Contact",
+    address_title: "Address",
+    address: "Vojvode Stepe 37, Belgrade",
+    prizes_title: "Prizes and Achievements",
     title: "About us",
     description:
       "At our restaurant, we are committed to providing our guests with an exceptional dining experience. Our team of talented chefs combines traditional recipes with innovative techniques to create dishes that are both delicious and memorable. We take pride in sourcing the finest ingredients to ensure that every dish is of the highest quality. Whether you're joining us for lunch or dinner, we look forward to welcoming you and sharing our passion for great food.",

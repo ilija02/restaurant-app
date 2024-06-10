@@ -55,6 +55,7 @@
                 {{ $t("menu.download") }}
             </button>
         </div>
+        <Footer />
     </div>
 </template>
 
@@ -63,12 +64,13 @@ import MenuItem from "@/components/MenuItem.vue";
 import Header from "@/components/layout/Header.vue";
 import { dishes } from '@/data/dishes.js';
 import downloadMenu from '@/util/menu.js'
-
+import Footer from '@/components/layout/Footer.vue'
 export default {
     name: "MenuPage",
     components: {
         MenuItem,
         Header,
+        Footer
     },
     data() {
         return {

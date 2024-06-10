@@ -21,7 +21,7 @@
       </div>
     </header>
     <div class="px-12 py-6 border-b-2 border-gray-200 border-dashed">
-      <AboutComponent />
+      <AboutComponent @click="redirect()"/>
 
     </div>
     <div id="top-dishes" class="px-4 py-6 border-b-2 border-dashed border-gray-200">
@@ -34,6 +34,7 @@
     </div>
     <!-- So the language switch doesn't interfere with page content -->
     <div class="h-6"></div>
+    <Footer />
   </div>
 </template>
 
@@ -43,6 +44,7 @@ import TopDishes from '@/components/TopDishes.vue'
 import DealsComponent from '@/components/DealsComponent.vue'
 import TestimonialsComponent from '@/components/TestimonialsComponent.vue'
 import AboutComponent from '@/components/AboutComponent.vue'
+import Footer from '@/components/layout/Footer.vue'
 export default {
   name: "HomePage",
   components: {
@@ -50,8 +52,14 @@ export default {
     TopDishes,
     DealsComponent,
     TestimonialsComponent,
-    AboutComponent
+    AboutComponent,
+    Footer
   },
+  methods: {
+        redirect() {
+            this.$router.push('/about')
+        }
+    }
 };
 </script>
 
