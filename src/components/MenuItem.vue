@@ -6,11 +6,15 @@
                 <div>
                     <h3 class="text-xl font-semibold text-gray-900">{{ dish_lang.name }}</h3>
                     <p class="text-gray-600">{{ dish_lang.category }}</p>
-                    <div class="flex items-center space-x-1 mt-1">
-                        <fa v-for="star in 5" :key="star"
-                            :icon="['fas', star <= dish.rating ? 'star' : 'star-half-alt']" class="text-yellow-400">
-                        </fa>
+                    <div>
+                        <div class="flex items-center space-x-1 mt-1">
+                            <fa v-for="star in 5" :key="star"
+                                :icon="['fas', star <= dish.rating ? 'star' : 'star-half-alt']" class="text-yellow-400">
+                            </fa>
+                        </div>
+                        <span class="text-sm text-gray-300">{{ dish.rating }} out of 5</span>
                     </div>
+
                     <p class="text-primary-500 font-bold mt-2">${{ dish.price }}</p>
                 </div>
                 <button

@@ -8,7 +8,7 @@ export default {
     "Main Courses": "Glavna Jela",
     Desserts: "Dezerti",
   },
-  "add to cart": "Dodaj u korpu",
+  "add to cart": "Dodaj",
   footer_text:
     "Odsek za softversko inženjerstvo Elektrotehničkog fakulteta Univerziteta u Beogradu",
   nav: {

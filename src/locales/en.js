@@ -9,7 +9,7 @@ export default {
     gallery: "Gallery",
     account: "My Account",
   },
-  "add to cart": "Add to cart",
+  "add to cart": "Add",
   footer_text:
     "Department of Software Engineering, Faculty of Electrical Engineering, University of Belgrade",
   home: {
