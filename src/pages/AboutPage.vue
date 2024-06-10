@@ -44,21 +44,34 @@
         <!-- Contact and Map Section -->
         <h2 class="text-3xl font-semibold text-gray-800 mb-4 mx-12 pt-6">{{ $t('about.address_tel_title') }}</h2>
         <div class="flex flex-col md:flex-row items-center mx-12 py-6">
-            <div class="md:w-1/2 min-w-0">
+            <div class="md:w-1/2 min-w-64 w-full">
                 <Map />
             </div>
-            <table class="md:w-1/2 mt-6 md:mt-0 md:ml-8">
-                <tr>
-                    <td class="text-smallcaps font-bold">{{ $t('about.address_title') }}:</td>
-                    <td>{{ $t('about.address') }}</td>
-                </tr>
-                <tr>
-                    <td class="text-smallcaps font-bold">Tel:</td>
-                    <td>+123 456 7890</td>
-                </tr>
-            </table>
+            <div class="md:w-1/2 mt-6 md:mt-0 md:ml-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <table class="w-full">
+                        <tbody>
+                            <tr class="flex items-center space-x-2 mb-4">
+                                <td class="text-gray-700 font-bold flex items-center">
+                                    <fa icon="home" class="text-primary-500 mr-2" /> {{ $t('about.address_title') }}:
+                                </td>
+                                <td class="text-gray-600">
+                                    {{ $t('about.address') }}
+                                </td>
+                            </tr>
+                            <tr class="flex items-center space-x-2">
+                                <td class="text-gray-700 font-bold flex items-center">
+                                    <fa icon="phone" class="text-primary-500 mr-2" /> Tel:
+                                </td>
+                                <td class="text-gray-600">
+                                    +123 456 7890
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-
         <!-- Banners Section -->
         <h2 class="text-3xl font-semibold text-gray-800 mb-4 mx-12 pt-6">{{ $t('about.banners_title') }}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-12 mb-8 p-4">

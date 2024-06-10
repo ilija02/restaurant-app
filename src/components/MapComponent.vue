@@ -1,5 +1,5 @@
 <template>
-    <div class="map-container relative z-10 h-96">
+    <div class="map-container relative z-10 h-96 w-full">
         <div class="map object-cover w-full h-full" ref="map"></div>
     </div>
 </template>
