@@ -41,7 +41,6 @@ import TopDishes from '@/components/TopDishes.vue'
 import DealsComponent from '@/components/DealsComponent.vue'
 import TestimonialsComponent from '@/components/TestimonialsComponent.vue'
 import AboutComponent from '@/components/AboutComponent.vue'
-import Footer from '@/components/layout/Footer.vue'
 export default {
   name: "HomePage",
   components: {
@@ -50,7 +49,6 @@ export default {
     DealsComponent,
     TestimonialsComponent,
     AboutComponent,
-    Footer
   },
   methods: {
     redirect() {
