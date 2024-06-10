@@ -14,7 +14,7 @@
                 <h2 class="text-2x1 font-semibold">{{ $t('gallery.videos_title') }}
                     <fa icon='play-circle' />
                 </h2>
-                <VideoGallery :videos="videos" class="h-100" />
+                <VideoGallery :videos="videos" />
             </div>
         </div>
     </div>
@@ -44,9 +44,9 @@ export default {
                 'img/restaurant4.jpg'
             ],
             videos: [
-                'video/restaurant1.mp4',
-                'video/restaurant2.mp4',
-                'video/restaurant3.mp4'
+                'dQw4w9WgXcQ',
+                'dQw4w9WgXcQ',
+                'dQw4w9WgXcQ'
             ],
         };
     },
