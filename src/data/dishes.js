@@ -11,8 +11,7 @@ export const dishes = [
     price: 5,
     image: "/img/food/spring-rolls.jpg",
     smallPortion: 5,
-    largePortion: 8,
-    rating: 4.3,
+    largePortion: 8
   },
   {
     id: 2,
@@ -25,8 +24,7 @@ export const dishes = [
     price: 12,
     image: "/img/food/sweet-sour-pork.jpg",
     smallPortion: 10,
-    largePortion: 16,
-    rating: 4.6,
+    largePortion: 16
   },
   {
     id: 3,
@@ -40,8 +38,7 @@ export const dishes = [
     price: 7,
     image: "/img/food/fried-ice-cream.jpg",
     smallPortion: 6,
-    largePortion: 10,
-    rating: 4.2,
+    largePortion: 10
   },
   {
     id: 4,
@@ -55,8 +52,7 @@ export const dishes = [
     price: 7,
     image: "/img/food/scallion-pancakes.webp",
     smallPortion: 7,
-    largePortion: 11,
-    rating: 4.0,
+    largePortion: 11
   },
   {
     id: 5,
@@ -70,8 +66,7 @@ export const dishes = [
     price: 4,
     image: "/img/food/edamame.jpg",
     smallPortion: 3,
-    largePortion: 6,
-    rating: 4.4,
+    largePortion: 6
   },
   {
     id: 6,
@@ -85,8 +80,7 @@ export const dishes = [
     price: 5,
     image: "/img/food/seaweed-salad.jpg",
     smallPortion: 4,
-    largePortion: 7,
-    rating: 4.1,
+    largePortion: 7
   },
   {
     id: 7,
@@ -101,8 +95,7 @@ export const dishes = [
     price: 15,
     image: "/img/food/kung-pao-chicken.jpg",
     smallPortion: 12,
-    largePortion: 18,
-    rating: 4.8,
+    largePortion: 18
   },
   {
     id: 8,
@@ -115,8 +108,7 @@ export const dishes = [
     price: 13,
     image: "/img/food/mapo-tofu.jpg",
     smallPortion: 12,
-    largePortion: 18,
-    rating: 4.7,
+    largePortion: 18
   },
   {
     id: 9,
@@ -130,8 +122,7 @@ export const dishes = [
     price: 11,
     image: "/img/food/chow-mein.jpg",
     smallPortion: 12,
-    largePortion: 18,
-    rating: 4.5,
+    largePortion: 18
   },
   {
     id: 10,
@@ -144,8 +135,7 @@ export const dishes = [
     price: 6,
     image: "/img/food/sesame-balls.jpg",
     smallPortion: 8,
-    largePortion: 11,
-    rating: 4.3,
+    largePortion: 11
   },
   {
     id: 11,
@@ -158,7 +148,6 @@ export const dishes = [
     price: 8,
     image: "/img/food/mango-pudding.jpg",
     smallPortion: 6,
-    largePortion: 10,
-    rating: 4.6,
+    largePortion: 10
   },
 ];

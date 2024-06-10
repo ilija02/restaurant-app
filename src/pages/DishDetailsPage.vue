@@ -8,10 +8,14 @@
                 <p class="text-gray-600 mt-2">{{ dish_lang.description }}</p>
                 <p class="text-gray-500 mt-2">{{ dish_lang.category }}</p>
                 <div class="flex items-center space-x-1 mt-2">
-                    <fa v-for="star in 5" :key="star" :icon="['fas', star <= dish.rating ? 'star' : 'star-half-alt']"
-                        class="text-yellow-400"></fa>
-                    <span class="text-sm text-gray-500">{{ dish.rating }} out of 5</span>
+                    <fa v-for="star in 5" :key="star" :icon="['fas', star <= rating() ? 'star' : 'star-half-alt']"
+                        class="text-yellow-400"
+                        @click="setRating(star)"
+                        @mouseover="setHoverRating(star)"
+                        @mouseleave="resetHoveredRating(star)"></fa>
+                    <span class="text-sm text-gray-500">{{ rating() }} out of 5</span>
                 </div>
+                <p v-if="rated()" class="font-bold mt-2">{{ $t('menu.rating') }}: {{ getMyRating() }}</p>
                 <div class="mt-6">
                     <div class="flex items-center space-x-4 mb-4">
                         <input type="radio" name="portionSize" value="s" id="smallPortion" v-model="tip" class="hidden">
@@ -73,6 +77,9 @@ export default {
             broj: 1,
             dish: null,
             cartItems: [],
+            ratings: [],
+            myRatings: [],
+            hoverRating: 0
         };
     },
     computed: {
@@ -127,6 +134,32 @@ export default {
         back() {
             this.$router.back();
         },
+        getMyRating() {
+            let ret = this.myRatings.find(rating=>rating.id == this.dish.id);
+            return ret.rating;
+        },
+        rated() {
+            if (this.myRatings.find(rating=>rating.id == this.dish.id)) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        setRating(rating) {
+            if (!this.rated()) {
+                let ret = this.getRating();
+                ret.numRatings += 1;
+                ret.sumRatings += rating;
+
+                let new_my_rating = {
+                    id: this.dish.id,
+                    rating: rating
+                };
+                this.myRatings.push(new_my_rating);
+                localStorage.setItem("ratings", JSON.stringify(this.ratings));
+                localStorage.setItem("myRatings", JSON.stringify(this.myRatings));
+            }
+        },
         removeFromCart() {
             const quantity = parseInt(this.broj);
 
@@ -148,6 +181,24 @@ export default {
                 localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
                 this.$router.push('/my-account');
             }
+        },
+        getRating() {
+            let ret = this.ratings.find(rating=>rating.id == this.dish.id);
+            return ret;
+        },
+        rating() {
+            if (!this.rated() && this.hoverRating != 0) {
+                return this.hoverRating;
+            }
+
+            let ret = this.getRating();
+            return (ret.sumRatings / ret.numRatings).toFixed(2);
+        },
+        setHoverRating(rating) {
+            this.hoverRating = rating;
+        },
+        resetHoveredRating(rating) {
+            this.hoverRating = 0;
         }
     },
     created() {
@@ -160,6 +211,29 @@ export default {
             this.cartItems = [];
             localStorage.setItem("cartItems", JSON.stringify([]));
         }
+        
+        this.ratings = localStorage.getItem("ratings");
+        if (this.ratings) {
+            this.ratings = JSON.parse(this.ratings);
+        } else {
+            this.ratings = [
+                { id: 1, numRatings: 5, sumRatings: 20 },
+                { id: 2, numRatings: 2, sumRatings: 9 },
+                { id: 3, numRatings: 5, sumRatings: 21 },
+                { id: 4, numRatings: 5, sumRatings: 20 },
+                { id: 5, numRatings: 5, sumRatings: 22 },
+                { id: 6, numRatings: 10, sumRatings: 41 },
+                { id: 7, numRatings: 5, sumRatings: 24 },
+                { id: 8, numRatings: 10, sumRatings: 47 },
+                { id: 9, numRatings: 4, sumRatings: 18 },
+                { id: 10, numRatings: 10, sumRatings: 43 },
+                { id: 11, numRatings: 5, sumRatings: 23 }
+            ];
+            localStorage.setItem("ratings", JSON.stringify(this.ratings));
+        }
+
+        this.myRatings = localStorage.getItem("myRatings")
+        this.myRatings = this.myRatings ? JSON.parse(this.myRatings) : []
     }
 };
 </script>
