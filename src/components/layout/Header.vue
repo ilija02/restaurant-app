@@ -39,7 +39,7 @@
           </div>
           <!-- End of Menu with submenu -->
           <router-link to="/about" class="text-gray-800 hover:text-primary-500">{{ $t("nav.about") }}</router-link>
-          <router-link to="#" class="text-gray-800 hover:text-primary-500">{{ $t("nav.gallery") }}</router-link>
+          <router-link to="/gallery" class="text-gray-800 hover:text-primary-500">{{ $t("nav.gallery") }}</router-link>
           <router-link to="#" class="text-gray-800 hover:text-primary-500">{{ $t("nav.account") }}</router-link>
         </div>
         <button type="button"
@@ -83,9 +83,9 @@
           </div>
         </div>
         <!-- End of Mobile submenu -->
-        <router-link to="#" class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">{{
+        <router-link to="/about" class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">{{
           $t("nav.about") }}</router-link>
-        <router-link to="#" class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">{{
+        <router-link to="/gallery" class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">{{
           $t('nav.gallery') }}</router-link>
         <router-link to="#" class="block text-gray-800 hover:bg-gray-200 hover:text-primary-500 py-1 px-2 rounded-md">{{
           $t('nav.account') }}</router-link>

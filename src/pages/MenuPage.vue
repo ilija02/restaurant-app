@@ -2,7 +2,7 @@
     <div class="min-h-screen bg-gray-100">
         <!-- Header -->
         <Header />
-
+        <BreadCrumbs :crumbs="crumbs" class="mx-12" />
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 ">
             <div
                 class="flex flex-col md:flex-row md:justify-between md:border-b-2 md:border-dashed md:border-gray-500  md:pb-2 mb-8">
@@ -64,11 +64,13 @@ import MenuItem from "@/components/MenuItem.vue";
 import Header from "@/components/layout/Header.vue";
 import { dishes } from '@/data/dishes.js';
 import downloadMenu from '@/util/menu.js'
+import BreadCrumbs from "@/components/navigation/BreadCrumbs.vue";
 export default {
     name: "MenuPage",
     components: {
         MenuItem,
         Header,
+        BreadCrumbs
     },
     data() {
         return {
@@ -103,6 +105,19 @@ export default {
 
             return filteredDishes;
         },
+        crumbs() {
+            let ret = [
+                { label: this.$t('nav.home'), to: '/' },
+                { label: this.$t('nav.menu'), to: '/menu' } ]
+
+            let category = this.$route.params.category
+            if (category) {
+                ret.push({
+                    label: this.$t('menu.' + category), to: '/menu/' + category
+                })
+            }
+            return ret
+        }
     },
     mounted: function () {
         this.selectedCategory = this.$route.params.category || "all";

@@ -1,6 +1,7 @@
 <template>
     <div>
         <Header />
+        <BreadCrumbs :crumbs="crumbs" class="mx-12" />
         <div class="flex flex-col md:flex-row items-center mx-12 py-6 border-b-2 border-gray-200 border-dashed">
             <div class="md:w-1/2 mt-6 md:mt-0 md:mr-8">
                 <h2 class="text-3xl font-semibold text-gray-800 mb-4">{{ $t("about.title") }}</h2>
@@ -62,11 +63,13 @@
 import ImageGallery from '@/components/ImageGalleryComponent.vue';
 import Header from "@/components/layout/Header.vue";
 import Map from '@/components/MapComponent.vue'
+import BreadCrumbs from '@/components/navigation/BreadCrumbs.vue';
 
 export default {
     components: {
         ImageGallery,
         Header,
+        BreadCrumbs,
         Map
     },
     data() {
@@ -84,7 +87,7 @@ export default {
             gallerySitePrizes: [
                 '/img/prizes/site_prize1.jpg',
                 '/img/prizes/site_prize2.jpg'
-            ]
+            ],
         };
     },
     computed: {
@@ -105,6 +108,12 @@ export default {
                 : [
                     { name: "Vodeća Platforma za Online Naručivanje", desc: "Izuzetan sistem online naručivanja restorana" },
                     { name: "Nagrada Izbora Korisnika", desc: "Zasnovana na recenzijama i ocenama korisnika na platformama, konzistentno izvanredna hrana, usluga i online prisustvo su prepoznati" }]
+        },
+        crumbs() {
+            return [
+                { label: this.$t('nav.home'), to: '/' },
+                { label: this.$t('nav.about'), to: '/about' } 
+            ]
         }
     },
 };
