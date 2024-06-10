@@ -5,7 +5,7 @@
         <BreadCrumbs :crumbs="crumbs" class="mx-12" />
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 ">
             <div
-                class="flex flex-col md:flex-row md:justify-between md:border-b-2 md:border-dashed md:border-gray-500  md:pb-2 mb-8">
+                class="flex flex-col md:flex-row md:justify-between md:border-b-2 md:border-dashed md:border-gray-500 md:pb-2 mb-8">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ $t("menu.subtitle") }}</h2>
 
                 <!-- Sorting and Searching -->
@@ -28,10 +28,8 @@
             <!-- Category Tabs -->
             <div class="flex justify-center mb-8">
                 <button v-for="category in categories" :key="category" @click="selectCategory(category)" :class="{
-                    'bg-primary-500 text-white':
-                        selectedCategory === categoryToSlug(category),
-                    'bg-gray-200 text-gray-700':
-                        selectedCategory !== categoryToSlug(category),
+                    'bg-primary-500 text-white': selectedCategory === categoryToSlug(category),
+                    'bg-gray-200 text-gray-700': selectedCategory !== categoryToSlug(category),
                 }" class="px-4 py-2 mx-2 rounded-full focus:outline-none hover:bg-primary-500 hover:text-white">
                     {{ getTranslationCategory(category) }}
                 </button>
@@ -39,10 +37,11 @@
 
             <!-- Menu Items -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <MenuItem v-for="dish in filteredAndSortedDishes" :key="dish.id" :dish="dish" :on_account_page="false" :category="selectedCategory"/>
+                <MenuItem v-for="dish in filteredAndSortedDishes" :key="dish.id" :dish="dish" :on_account_page="false"
+                    :category="selectedCategory" />
             </div>
             <div v-if="filteredAndSortedDishes.length == 0" class="text-lg flex justify-center">
-                <p>No such dish found</p>
+                <p>{{ $t("menu.no_dish_found") }}</p>
             </div>
         </div>
 
@@ -65,6 +64,7 @@ import Header from "@/components/layout/Header.vue";
 import { dishes } from '@/data/dishes.js';
 import downloadMenu from '@/util/menu.js'
 import BreadCrumbs from "@/components/navigation/BreadCrumbs.vue";
+
 export default {
     name: "MenuPage",
     components: {
@@ -84,23 +84,23 @@ export default {
     },
     computed: {
         filteredAndSortedDishes() {
-            // console.log("Selected Category: ", this.selectedCategory);
+            const locale = this.$i18n.locale;
+            const nameKey = locale === 'sr' ? 'name_sr' : 'name';
+
             let filteredDishes = this.dishes.filter(
                 (dish) =>
                     (this.selectedCategory === "all" ||
-                        this.categoryToSlug(dish.category) ==
-                        this.selectedCategory) &&
-                    (dish.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                        this.categoryToSlug(dish.category) === this.selectedCategory) &&
+                    (dish[nameKey].toLowerCase().includes(this.searchQuery.toLowerCase()) ||
                         dish.price.toString().includes(this.searchQuery))
             );
 
             if (this.sortKey === "name") {
-                filteredDishes.sort((a, b) => a.name.localeCompare(b.name));
+                filteredDishes.sort((a, b) => a[nameKey].localeCompare(b[nameKey]));
             } else if (this.sortKey === "price") {
                 filteredDishes.sort((a, b) => a.price - b.price);
             } else if (this.sortKey === "rating") {
                 filteredDishes.sort((a, b) => b.rating - a.rating);
-                console.log(filteredDishes.map(d => d.rating))
             }
 
             return filteredDishes;
@@ -108,21 +108,22 @@ export default {
         crumbs() {
             let ret = [
                 { label: this.$t('nav.home'), to: '/' },
-                { label: this.$t('nav.menu'), to: '/menu' } ]
+                { label: this.$t('nav.menu'), to: '/menu' }
+            ];
 
-            let category = this.$route.params.category
+            let category = this.$route.params.category;
             if (category && category !== 'all') {
                 ret.push({
                     label: this.$t('menu.' + category), to: '/menu/' + category
-                })
+                });
             }
-            return ret
+            return ret;
         }
     },
-    mounted: function () {
+    mounted() {
         this.selectedCategory = this.$route.params.category || "all";
     },
-    updated: function () {
+    updated() {
         this.selectedCategory = this.$route.params.category || "all";
     },
     methods: {
