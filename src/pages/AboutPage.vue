@@ -8,7 +8,7 @@
                     {{ $t("about.description") }}
                 </p>
             </div>
-            <ImageGallery :images="galleryImages" class="md:w-1/2"/>
+            <ImageGallery :images="galleryImages" class="md:w-1/2" />
         </div>
         <h2 class="text-3xl font-semibold text-gray-800 mb-4 mx-12 pt-6">{{ $t('about.prizes_title') }}</h2>
         <div class="flex flex-col md:flex-row items-center px-12 py-6">
@@ -49,12 +49,11 @@
                 </tr>
             </table>
         </div>
-        <Footer />
     </div>
 </template>
 
 <style>
-.text-smallcaps{
+.text-smallcaps {
     font-variant: small-caps;
 }
 </style>
@@ -62,14 +61,12 @@
 <script>
 import ImageGallery from '@/components/ImageGalleryComponent.vue';
 import Header from "@/components/layout/Header.vue";
-import Footer from '@/components/layout/Footer.vue';
 import Map from '@/components/MapComponent.vue'
 
 export default {
     components: {
         ImageGallery,
         Header,
-        Footer,
         Map
     },
     data() {
@@ -92,22 +89,22 @@ export default {
     },
     computed: {
         restaurant_prizes() {
-            return this.$i18n.locale === 'en' ? [ 
-                {name: "Michelin Star", desc: "Recipient of Two Michelin Stars"}, 
-                {name: "Best Chinese Restaurant Award", desc: "Winner of the award for the best restaurant in the region"}, 
-                {name: "Master Chef Certificate", desc: "A certificate awarded only to a true master of culinary skills"} ] 
-                : [ 
-                {name: "Mišelin Zvezda", desc: "Dobitnik Dve Mišelin Zvezde"}, 
-                {name: "Nagrada za Najbolji Kineski Restoran", desc: "Winner of the award for the best restaurant in the region"}, 
-                {name: "Master Šef Sertifikat", desc: "Sertifikat koji se dodeljuje samo pravom majstoru kulinarskih veština"} ]
+            return this.$i18n.locale === 'en' ? [
+                { name: "Michelin Star", desc: "Recipient of Two Michelin Stars" },
+                { name: "Best Chinese Restaurant Award", desc: "Winner of the award for the best restaurant in the region" },
+                { name: "Master Chef Certificate", desc: "A certificate awarded only to a true master of culinary skills" }]
+                : [
+                    { name: "Mišelin Zvezda", desc: "Dobitnik Dve Mišelin Zvezde" },
+                    { name: "Nagrada za Najbolji Kineski Restoran", desc: "Winner of the award for the best restaurant in the region" },
+                    { name: "Master Šef Sertifikat", desc: "Sertifikat koji se dodeljuje samo pravom majstoru kulinarskih veština" }]
         },
         site_prizes() {
-            return this.$i18n.locale === 'en' ? [ 
-            {name: "Top Online Ordering Platform", desc: "An exceptional online ordering system"},
-            {name: "Customer Choice Award", desc: "Based on customer reviews and ratings, restaurant's consistently excellent food, service, and online presence was acknowledged"} ] 
-            : [ 
-            {name: "Vodeća Platforma za Online Naručivanje", desc: "Izuzetan sistem online naručivanja restorana"},
-            {name: "Nagrada Izbora Korisnika", desc: "Zasnovana na recenzijama i ocenama korisnika na platformama, konzistentno izvanredna hrana, usluga i online prisustvo su prepoznati"} ]
+            return this.$i18n.locale === 'en' ? [
+                { name: "Top Online Ordering Platform", desc: "An exceptional online ordering system" },
+                { name: "Customer Choice Award", desc: "Based on customer reviews and ratings, restaurant's consistently excellent food, service, and online presence was acknowledged" }]
+                : [
+                    { name: "Vodeća Platforma za Online Naručivanje", desc: "Izuzetan sistem online naručivanja restorana" },
+                    { name: "Nagrada Izbora Korisnika", desc: "Zasnovana na recenzijama i ocenama korisnika na platformama, konzistentno izvanredna hrana, usluga i online prisustvo su prepoznati" }]
         }
     },
 };

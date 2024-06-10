@@ -49,13 +49,12 @@
         <!-- <DishDetails v-if="selectedDish" :dish="selectedDish" @close="selectedDish = null" @add-to-cart="addToCart" /> -->
 
         <!-- Button to download menu as PDF -->
-        <div class="fixed bottom-4 right-4">
+        <div class="fixed bottom-4 right-4 z-50">
             <button class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 shadow-black shadow-sm"
                 @click="downloadMenu">
                 {{ $t("menu.download") }}
             </button>
         </div>
-        <Footer />
     </div>
 </template>
 
@@ -64,13 +63,11 @@ import MenuItem from "@/components/MenuItem.vue";
 import Header from "@/components/layout/Header.vue";
 import { dishes } from '@/data/dishes.js';
 import downloadMenu from '@/util/menu.js'
-import Footer from '@/components/layout/Footer.vue'
 export default {
     name: "MenuPage",
     components: {
         MenuItem,
         Header,
-        Footer
     },
     data() {
         return {

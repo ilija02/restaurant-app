@@ -12,15 +12,19 @@
     </div>
   </div>
   <router-view />
+  <!-- So the language switch doesn't interfere with page content -->
+  <Footer />
   <LanguageSwitch />
 </template>
 
 <script>
 import LanguageSwitch from '@/components/LanguageSwitch.vue';
+import Footer from '@/components/layout/Footer.vue';
 export default {
   name: "App",
   components: {
-    LanguageSwitch
+    LanguageSwitch,
+    Footer
   },
 };
 </script>

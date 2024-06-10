@@ -21,7 +21,7 @@
       </div>
     </header>
     <div class="px-12 py-6 border-b-2 border-gray-200 border-dashed">
-      <AboutComponent @click="redirect()"/>
+      <AboutComponent @click="redirect()" />
 
     </div>
     <div id="top-dishes" class="px-4 py-6 border-b-2 border-dashed border-gray-200">
@@ -32,9 +32,6 @@
       <TestimonialsComponent />
 
     </div>
-    <!-- So the language switch doesn't interfere with page content -->
-    <div class="h-6"></div>
-    <Footer />
   </div>
 </template>
 
@@ -56,10 +53,10 @@ export default {
     Footer
   },
   methods: {
-        redirect() {
-            this.$router.push('/about')
-        }
+    redirect() {
+      this.$router.push('/about')
     }
+  }
 };
 </script>
 
