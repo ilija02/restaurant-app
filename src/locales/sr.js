@@ -1,6 +1,7 @@
 export default {
   restaurant: {
     name: "Kineski Restoran",
+    topbar: "Pon-Pet: 10:00 - 22:00, Sub-Ned: 11:00 - 23:00",
   },
   categories: {
     All: "Sve",

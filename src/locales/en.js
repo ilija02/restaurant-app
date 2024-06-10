@@ -1,6 +1,7 @@
 export default {
   restaurant: {
     name: "Chinese Restaurant",
+    topbar: "Mon-Fri: 10:00 AM - 10:00 PM, Sat-Sun: 11:00 AM - 11:00 PM",
   },
   nav: {
     home: "Home",
