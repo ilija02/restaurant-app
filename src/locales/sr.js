@@ -5,11 +5,12 @@ export default {
   categories: {
     All: "Sve",
     Appetizers: "Predjela",
-    'Main Courses': "Glavna Jela",
-    Desserts: "Dezerti"
+    "Main Courses": "Glavna Jela",
+    Desserts: "Dezerti",
   },
-  'add to cart': "Dodaj u korpu",
-  footer_text: "Odsek za softversko inženjerstvo Elektrotehničkog fakulteta Univerziteta u Beogradu",
+  "add to cart": "Dodaj u korpu",
+  footer_text:
+    "Odsek za softversko inženjerstvo Elektrotehničkog fakulteta Univerziteta u Beogradu",
   nav: {
     home: "Početna",
     menu: "Jelovnik",
@@ -36,6 +37,7 @@ export default {
     download: "Preuzmi jelovnik",
     name: "Naziv",
     price: "Cena",
+    rating: "Rejting",
   },
   about: {
     address_tel_title: "Lokacija i Kontakt",

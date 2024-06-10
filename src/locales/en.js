@@ -9,8 +9,9 @@ export default {
     gallery: "Gallery",
     account: "My Account",
   },
-  'add to cart': "Add to cart",
-  footer_text: "Department of Software Engineering, Faculty of Electrical Engineering, University of Belgrade",
+  "add to cart": "Add to cart",
+  footer_text:
+    "Department of Software Engineering, Faculty of Electrical Engineering, University of Belgrade",
   home: {
     welcome: "Welcome to our Chinese restaurant",
     subtitle: "Discover authentic flavors and culinary secrets of China",
@@ -30,6 +31,7 @@ export default {
     download: "Download Menu",
     name: "Name",
     price: "Price",
+    rating: "Rating",
   },
 
   about: {

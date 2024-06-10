@@ -16,6 +16,7 @@
                             class="p-2 border border-gray-300 rounded-md w-full md:w-auto">
                             <option value="name">{{ $t("menu.name") }}</option>
                             <option value="price">{{ $t("menu.price") }}</option>
+                            <option value="rating">{{ $t("menu.rating") }}</option>
                         </select>
                     </div>
                     <div class="flex items-center space-x-4 mt-4 md:mt-0 w-full md:w-auto">
@@ -95,6 +96,9 @@ export default {
                 filteredDishes.sort((a, b) => a.name.localeCompare(b.name));
             } else if (this.sortKey === "price") {
                 filteredDishes.sort((a, b) => a.price - b.price);
+            } else if (this.sortKey === "rating") {
+                filteredDishes.sort((a, b) => b.rating - a.rating);
+                console.log(filteredDishes.map(d => d.rating))
             }
 
             return filteredDishes;

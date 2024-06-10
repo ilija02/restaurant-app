@@ -16,7 +16,8 @@
                 <button
                     class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300"
                     @click="addToCart">
-                    <fa :icon="['fas', 'cart-plus']" /> <span class="text-white text-sm pl-2">{{ $t("add to cart") }}</span>
+                    <fa :icon="['fas', 'cart-plus']" /> <span class="text-white text-sm pl-2">{{ $t("add to cart")
+                        }}</span>
                 </button>
             </div>
         </div>
