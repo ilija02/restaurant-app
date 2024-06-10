@@ -1,50 +1,55 @@
 <template>
     <div class="container mx-auto p-4">
         <Header />
-        <div class="bg-white rounded-lg shadow-md p-4" v-if="dish">
+        <div class="bg-white rounded-lg shadow-md p-6" v-if="dish">
             <img :src="dish.image" alt="" class="h-60 w-full object-cover rounded-lg shadow-inner shadow-black">
-            <div class="mt-4">
+            <div class="mt-6">
                 <h2 class="text-2xl font-bold text-gray-900">{{ dish_lang.name }}</h2>
-                <p class="text-gray-600">{{ dish_lang.description }}</p>
+                <p class="text-gray-600 mt-2">{{ dish_lang.description }}</p>
                 <p class="text-gray-500 mt-2">{{ dish_lang.category }}</p>
-                <div class="flex items-center space-x-1 mt-1">
+                <div class="flex items-center space-x-1 mt-2">
                     <fa v-for="star in 5" :key="star" :icon="['fas', star <= dish.rating ? 'star' : 'star-half-alt']"
-                        class="text-yellow-400">
-                    </fa>
+                        class="text-yellow-400"></fa>
                     <span class="text-sm text-gray-500">{{ dish.rating }} out of 5</span>
                 </div>
-                <div class="mt-4">
-                    <input type="radio" name="radio" value="s" id="radios" v-model="tip" checked>&nbsp;
-                    <label for="radios" class="text-primary-500 font-bold">
-                        {{ $t("menu.small_portion") }}: ${{ dish.smallPortion }}
-                    </label>
-                    <br>
-                    <input type="radio" name="radio" value="l" id="radiol" v-model="tip">&nbsp;
-                    <label for="radiol" class="text-primary-500 font-bold">
-                        {{ $t("menu.large_portion") }}: ${{ dish.largePortion }}
-                    </label>
-                    <br>
-                    <label for="numberQ" class="mr-1">{{ $t('menu.quantity') }}: </label>
-                    <input type="number" value="1" @input="handleInput()" id="numberQ" class="border border-gray-300 rounded-md mr-6" v-model="broj">
+                <div class="mt-6">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <input type="radio" name="portionSize" value="s" id="smallPortion" v-model="tip" class="hidden">
+                        <label for="smallPortion"
+                            class="cursor-pointer text-primary-500 font-bold p-2 border rounded-lg"
+                            :class="{ 'bg-primary-900 text-white': tip === 's' }">
+                            {{ $t("menu.small_portion") }}: ${{ dish.smallPortion }}
+                        </label>
+                        <input type="radio" name="portionSize" value="l" id="largePortion" v-model="tip" class="hidden">
+                        <label for="largePortion"
+                            class="cursor-pointer text-primary-500 font-bold p-2 border rounded-lg"
+                            :class="{ 'bg-primary-900 text-white': tip === 'l' }">
+                            {{ $t("menu.large_portion") }}: ${{ dish.largePortion }}
+                        </label>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <label for="quantity" class="text-gray-700">{{ $t('menu.quantity') }}:</label>
+                        <input type="number" id="quantity" v-model="broj" @input="handleInput" min="1"
+                            class="border border-gray-300 rounded-md w-20 text-center">
+                    </div>
                 </div>
-                <button
-                    class="mt-4 px-4 py-2 mr-2 bg-accent-400 text-white rounded-lg hover:bg-accent-500 transition-colors duration-300"
-                    @click="back()">
-                    <fa :icon="['fas', 'fa-times']" /> <span class="text-white text-sm pl-2">{{ $t('cancel') 
-                        }}</span>
-                </button>
-                <button v-if="has_this"
-                    class="mt-4 px-4 py-2 mr-2 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-colors duration-300"
-                    @click="removeFromCart">
-                    <fa :icon="['fas', 'fa-trash']" /> <span class="test-white text-sm pl-2">{{$t('remove from cart')
-                        }}</span>
-                </button>
-                <button
-                    class="mt-4 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300"
-                    @click="addToCart">
-                    <fa :icon="['fas', 'cart-plus']" /> <span class="text-white text-sm pl-2">{{ $t("add to cart")
-                        }}</span>
-                </button>
+                <div class="mt-6 flex space-x-4">
+                    <button
+                        class="px-4 py-2 bg-accent-400 text-white rounded-lg hover:bg-accent-500 transition-colors duration-300"
+                        @click="back">
+                        <fa :icon="['fas', 'times']" class="mr-2" /> {{ $t('cancel') }}
+                    </button>
+                    <button v-if="has_this"
+                        class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-300"
+                        @click="removeFromCart">
+                        <fa :icon="['fas', 'trash']" class="mr-2" /> {{ $t('remove from cart') }}
+                    </button>
+                    <button
+                        class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300"
+                        @click="addToCart">
+                        <fa :icon="['fas', 'cart-plus']" class="mr-2" /> {{ $t('add to cart') }}
+                    </button>
+                </div>
             </div>
         </div>
         <div v-else>
@@ -55,15 +60,12 @@
 
 <script>
 import { dishes } from '@/data/dishes';
-import Header from '@/components/layout/Header.vue'
-import { withDirectives } from 'vue';
-import BreadCrumbs from '@/components/navigation/BreadCrumbs.vue';
+import Header from '@/components/layout/Header.vue';
 
 export default {
     name: "DishDetail",
     components: {
-        Header,
-        BreadCrumbs
+        Header
     },
     data() {
         return {
@@ -83,19 +85,7 @@ export default {
             };
         },
         has_this() {
-            let found = -1;
-            for (let i = 0; i < this.cartItems.length; i++) {
-                if (this.cartItems[i].dish.name == this.dish.name) {
-                    found = i;
-                    break;
-                }
-            }
-
-            if (found != -1 && this.cartItems[found].quantity[this.tip] > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return this.cartItems.some(item => item.dish.name === this.dish.name && item.quantity[this.tip] > 0);
         }
     },
     methods: {
@@ -104,31 +94,26 @@ export default {
             this.dish = dishes.find(dish => dish.id === dishId);
         },
         addToCart() {
-            let cena = parseInt(this.broj) * (this.tip === 's' ? parseInt(this.dish.smallPortion) : parseInt(this.dish.largePortion));
+            const price = this.tip === 's' ? this.dish.smallPortion : this.dish.largePortion;
+            const quantity = parseInt(this.broj);
+            const totalPrice = price * quantity;
 
-            let found = -1;
-            for (let i = 0; i < this.cartItems.length; i++) {
-                if (this.cartItems[i].dish.name == this.dish.name) {
-                    found = i;
-                    break;
-                }
-            }
+            const existingItem = this.cartItems.find(item => item.dish.name === this.dish.name);
 
-            if (found !== -1) {
-                let item = this.cartItems[found];
-                item.quantity[this.tip] += parseInt(this.broj);
-                item.price += cena;
+            if (existingItem) {
+                existingItem.quantity[this.tip] += quantity;
+                existingItem.price += totalPrice;
             } else {
-                let new_item = {
+                const newItem = {
                     dish: this.dish,
                     quantity: {
-                        's': 0,
-                        'l': 0
+                        s: 0,
+                        l: 0
                     },
-                    price: cena
+                    price: totalPrice
                 };
-                new_item.quantity[this.tip] = parseInt(this.broj);
-                this.cartItems.push(new_item);
+                newItem.quantity[this.tip] = quantity;
+                this.cartItems.push(newItem);
             }
 
             localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
@@ -143,38 +128,34 @@ export default {
             this.$router.back();
         },
         removeFromCart() {
-            let cnt = parseInt(this.broj);
+            const quantity = parseInt(this.broj);
 
-            let found = -1;
-            for (let i = 0; i < this.cartItems.length; i++) {
-                if (this.cartItems[i].dish.name === this.dish.name) {
-                    found = i;
-                    break;
+            const existingItem = this.cartItems.find(item => item.dish.name === this.dish.name);
+
+            if (existingItem) {
+                const currentQuantity = existingItem.quantity[this.tip];
+                const removeQuantity = Math.min(quantity, currentQuantity);
+                const price = this.tip === 's' ? this.dish.smallPortion : this.dish.largePortion;
+                const totalPrice = price * removeQuantity;
+
+                existingItem.quantity[this.tip] -= removeQuantity;
+                existingItem.price -= totalPrice;
+
+                if (existingItem.quantity.s === 0 && existingItem.quantity.l === 0) {
+                    this.cartItems = this.cartItems.filter(item => item !== existingItem);
                 }
-            }
 
-            let item = this.cartItems[found];
-            if (item.quantity[this.tip] < cnt) {
-                cnt = item.quantity[this.tip];
+                localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
+                this.$router.push('/my-account');
             }
-            let cena = cnt * (this.tip === 's' ? parseInt(this.dish.smallPortion) : parseInt(this.dish.largePortion));
-            item.quantity[this.tip] -= cnt;
-            item.price -= cena;
-
-            if (item.quantity['s'] == 0 && item.quantity['l'] == 0) {
-                this.cartItems.splice(found, 1)
-            }
-
-            localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
-            this.$router.push('/my-account');
         }
     },
     created() {
         this.fetchDish();
 
-        this.cartItems = localStorage.getItem("cartItems");
-        if (this.cartItems) {
-            this.cartItems = JSON.parse(this.cartItems);
+        const storedCartItems = localStorage.getItem("cartItems");
+        if (storedCartItems) {
+            this.cartItems = JSON.parse(storedCartItems);
         } else {
             this.cartItems = [];
             localStorage.setItem("cartItems", JSON.stringify([]));
@@ -183,4 +164,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+/* Add any additional scoped styles here */
+</style>

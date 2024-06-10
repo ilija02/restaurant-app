@@ -1,42 +1,53 @@
 <template>
     <div min-h-screen bg-gray-100>
         <Header />
-        <BreadCrumbs :crumbs="crumbs" class="mx-8"/>
-        <h1 class="text-2xl font-bold my-4 mx-8">{{ username }} - {{$t('myaccount.cart')}}</h1>
+        <BreadCrumbs :crumbs="crumbs" class="mx-8" />
+        <h1 class="text-2xl font-bold my-4 mx-8">{{ username }} - {{ $t('myaccount.cart') }}</h1>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div v-if="cartItems.length > 0" class="flex flex-col md:flex-row md:justify-between">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div v-for="item in cartItems" :key="item.id" class="my-2">
                         <MenuItem :dish="item.dish" :on_account_page="true" :quantitys="item.quantity['s']"
-                            :quantityl="item.quantity['l']" :price="item.price" :category="false"/>
+                            :quantityl="item.quantity['l']" :price="item.price" :category="false" />
                     </div>
                 </div>
             </div>
             <div v-else class="flex justify-center items-center">
-                <p class="font-bold italic">{{ $t('myaccount.empty')}}</p>
+                <p class="font-bold italic">{{ $t('myaccount.empty') }}</p>
             </div>
         </div>
         <div class="flex justify-end border-b-2 border-gray-200 border-dashed mx-8">
-            <button class="px-4 py-2 my-4 bg-orange-500 text-white rounded-lg hover:bg-orange-700 shadow-black shadow-sm"
+            <button
+                class="px-4 py-2 my-4 bg-accent-500 text-white rounded-lg hover:bg-primary-500 shadow-black shadow-sm"
                 @click="confirmOrder">{{ $t('myaccount.confirm') }}</button>
         </div>
-        <h1 class="text-2xl font-bold my-4 mx-8">{{ username }} - {{$t('myaccount.order')}}</h1>
+        <h1 class="text-2xl font-bold my-4 mx-8">{{ username }} - {{ $t('myaccount.order') }}</h1>
         <div class="flex justify-center">
             <div v-if="orders.length > 0">
-                <table v-for="(order, index) in orders" :key="index" class="m-auto divide-y divide-gray-200 table_order">
+                <table v-for="(order, index) in orders" :key="index"
+                    class="m-auto divide-y divide-gray-200 table_order">
                     <thead>
                         <tr>
-                            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ $t('menu.name')}}</th>
-                            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ $t('myaccount.quantitys') }}</th>
-                            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ $t('myaccount.quantityl')}}</th>
-                            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ $t('myaccount.price')}}</th>
+                            <th
+                                class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ $t('menu.name') }}</th>
+                            <th
+                                class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ $t('myaccount.quantitys') }}</th>
+                            <th
+                                class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ $t('myaccount.quantityl') }}</th>
+                            <th
+                                class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ $t('myaccount.price') }}</th>
                         </tr>
                     </thead>
-                    <tbody v-for="cartItem in order" :key="cartItem.dish.name" class="bg-white divide-y divide-gray-200">
+                    <tbody v-for="cartItem in order" :key="cartItem.dish.name"
+                        class="bg-white divide-y divide-gray-200">
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">{{ dish_lang(cartItem.dish).name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ cartItem.quantity['s'] }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ cartItem.quantity['l']}}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ cartItem.quantity['l'] }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ cartItem.price }}</td>
                         </tr>
                     </tbody>
@@ -47,12 +58,12 @@
                 </table>
             </div>
             <div v-else class="flex justify-center items-center">
-                <p class="font-bold italic">{{ $t('myaccount.emptyorders')}}</p>
+                <p class="font-bold italic">{{ $t('myaccount.emptyorders') }}</p>
             </div>
         </div>
     </div>
 </template>
-  
+
 <script>
 import Header from '@/components/layout/Header.vue';
 import MenuItem from '@/components/MenuItem.vue'
@@ -101,7 +112,7 @@ export default {
             return ret
         }
     },
-    created: function() {
+    created: function () {
         this.cartItems = localStorage.getItem("cartItems")
         this.cartItems = this.cartItems ? JSON.parse(this.cartItems) : []
 
@@ -120,7 +131,7 @@ export default {
         crumbs() {
             let ret = [
                 { label: this.$t('nav.home'), to: '/' },
-                { label: this.$t('nav.account'), to: '/my-account'}
+                { label: this.$t('nav.account'), to: '/my-account' }
             ]
 
             return ret

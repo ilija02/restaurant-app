@@ -19,15 +19,16 @@
                         <span class="text-sm text-gray-300">{{ dish.rating }} out of 5</span>
                     </div>
 
-                    <p v-if="!on_account_page" class="text-primary-500 font-bold mt-2">{{$t('menu.avg')}}: ${{ dish.price }}</p>
-                    <div v-if="on_account_page">
+                    <p v-if="!on_account_page" class="text-primary-500 font-bold mt-2">{{ $t('menu.avg') }}: ${{
+                        dish.price }}</p>
+                    <div v-if="on_account_page" class="rounded-md bg-gray-100 p-2 mr-2">
                         <p class="text-gray-600 font-bold mt-2">{{ $t('myaccount.quantitys') }}: {{ quantitys }}</p>
                         <p class="text-gray-600 font-bold mt-2">{{ $t('myaccount.quantityl') }}: {{ quantityl }}</p>
                         <p class="text-lime-700 font-bold mt-2">{{ $t('myaccount.price') }}: ${{ price }}</p>
                     </div>
                 </div>
                 <button
-                    class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300"
+                    class="px-4 py-3 mb-1 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300"
                     @click="addToCart">
                     <fa :icon="['fas', 'cart-plus']" /> <span class="text-white text-sm pl-2">{{ $t("edit cart")
                         }}</span>
