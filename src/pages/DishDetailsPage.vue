@@ -161,6 +161,10 @@ export default {
             item.quantity[this.tip] -= cnt;
             item.price -= cena;
 
+            if (item.quantity['s'] == 0 && item.quantity['l'] == 0) {
+                this.cartItems.splice(found, 1)
+            }
+
             localStorage.setItem("cartItems", JSON.stringify(this.cartItems));
             this.$router.push('/my-account');
         }
