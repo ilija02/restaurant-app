@@ -1,7 +1,10 @@
 <template>
-    <div min-h-screen bg-gray-100>
+    <div class="min-h-screen bg-gray-100">
+        <!-- Header Section -->
         <Header />
         <BreadCrumbs :crumbs="crumbs" class="mx-12" />
+
+        <!-- About Section -->
         <div class="flex flex-col md:flex-row items-center mx-12 py-6 border-b-2 border-gray-200 border-dashed">
             <div class="md:w-1/2 mt-6 md:mt-0 md:mr-8">
                 <h2 class="text-3xl font-semibold text-gray-800 mb-4">{{ $t("about.title") }}</h2>
@@ -11,6 +14,8 @@
             </div>
             <ImageGallery :images="galleryImages" class="md:w-1/2" />
         </div>
+
+        <!-- Prizes Section -->
         <h2 class="text-3xl font-semibold text-gray-800 mb-4 mx-12 pt-6">{{ $t('about.prizes_title') }}</h2>
         <div class="flex flex-col md:flex-row items-center px-12 py-6">
             <ImageGallery :images="galleryRestaurantPrizes" class="md:w-1/2" />
@@ -23,6 +28,7 @@
                 </ul>
             </div>
         </div>
+
         <div class="flex flex-col md:flex-row items-center mx-12 py-6 border-b-2 border-gray-200 border-dashed">
             <div class="md:w-1/2 mt-6 md:mt-0 md:mr-8">
                 <ul class="text-gray-700 leading-relaxed list-disc">
@@ -34,6 +40,8 @@
             </div>
             <ImageGallery :images="gallerySitePrizes" class="md:w-1/2" />
         </div>
+
+        <!-- Contact and Map Section -->
         <h2 class="text-3xl font-semibold text-gray-800 mb-4 mx-12 pt-6">{{ $t('about.address_tel_title') }}</h2>
         <div class="flex flex-col md:flex-row items-center mx-12 py-6">
             <div class="md:w-1/2 min-w-0">
@@ -50,10 +58,22 @@
                 </tr>
             </table>
         </div>
+
+        <!-- Banners Section -->
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4 mx-12 pt-6">{{ $t('about.banners_title') }}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-12 mb-8 p-4">
+            <div v-for="banner in banners" :key="banner.url" class="flex justify-center">
+                <a :href="banner.url" target="_blank" rel="noopener noreferrer">
+                    <img :src="banner.image" :alt="banner.alt"
+                        class="h-32 w-64 object-cover rounded-lg shadow-md hover:opacity-80 transition-opacity duration-300" />
+                </a>
+            </div>
+        </div>
+
     </div>
 </template>
 
-<style>
+<style scoped>
 .text-smallcaps {
     font-variant: small-caps;
 }
@@ -62,7 +82,7 @@
 <script>
 import ImageGallery from '@/components/ImageGalleryComponent.vue';
 import Header from "@/components/layout/Header.vue";
-import Map from '@/components/MapComponent.vue'
+import Map from '@/components/MapComponent.vue';
 import BreadCrumbs from '@/components/navigation/BreadCrumbs.vue';
 
 export default {
@@ -88,6 +108,23 @@ export default {
                 '/img/prizes/site_prize1.jpg',
                 '/img/prizes/site_prize2.jpg'
             ],
+            banners: [
+                {
+                    url: 'https://instantwok.com/',
+                    image: '/img/banners/instant-wok.png',
+                    alt: 'Banner 1 Description'
+                },
+                {
+                    url: 'https://tripleeightsupplies.com/',
+                    image: '/img/banners/888-logo.svg',
+                    alt: 'Banner 2 Description'
+                },
+                {
+                    url: 'https://asianhomegourmetdirect.co.uk/',
+                    image: '/img/banners/asian-home-gourmet.jpg',
+                    alt: 'Banner 3 Description'
+                }
+            ]
         };
     },
     computed: {
@@ -95,26 +132,28 @@ export default {
             return this.$i18n.locale === 'en' ? [
                 { name: "Michelin Star", desc: "Recipient of Two Michelin Stars" },
                 { name: "Best Chinese Restaurant Award", desc: "Winner of the award for the best restaurant in the region" },
-                { name: "Master Chef Certificate", desc: "A certificate awarded only to a true master of culinary skills" }]
-                : [
-                    { name: "Mišelin Zvezda", desc: "Dobitnik Dve Mišelin Zvezde" },
-                    { name: "Nagrada za Najbolji Kineski Restoran", desc: "Winner of the award for the best restaurant in the region" },
-                    { name: "Master Šef Sertifikat", desc: "Sertifikat koji se dodeljuje samo pravom majstoru kulinarskih veština" }]
+                { name: "Master Chef Certificate", desc: "A certificate awarded only to a true master of culinary skills" }
+            ] : [
+                { name: "Mišelin Zvezda", desc: "Dobitnik Dve Mišelin Zvezde" },
+                { name: "Nagrada za Najbolji Kineski Restoran", desc: "Dobitnik nagrade za najbolji restoran u regionu" },
+                { name: "Master Šef Sertifikat", desc: "Sertifikat koji se dodeljuje samo pravom majstoru kulinarskih veština" }
+            ];
         },
         site_prizes() {
             return this.$i18n.locale === 'en' ? [
                 { name: "Top Online Ordering Platform", desc: "An exceptional online ordering system" },
-                { name: "Customer Choice Award", desc: "Based on customer reviews and ratings, restaurant's consistently excellent food, service, and online presence was acknowledged" }]
-                : [
-                    { name: "Vodeća Platforma za Online Naručivanje", desc: "Izuzetan sistem online naručivanja restorana" },
-                    { name: "Nagrada Izbora Korisnika", desc: "Zasnovana na recenzijama i ocenama korisnika na platformama, konzistentno izvanredna hrana, usluga i online prisustvo su prepoznati" }]
+                { name: "Customer Choice Award", desc: "Based on customer reviews and ratings, restaurant's consistently excellent food, service, and online presence was acknowledged" }
+            ] : [
+                { name: "Vodeća Platforma za Online Naručivanje", desc: "Izuzetan sistem online naručivanja restorana" },
+                { name: "Nagrada Izbora Korisnika", desc: "Zasnovana na recenzijama i ocenama korisnika, konzistentno izvanredna hrana, usluga i online prisustvo su prepoznati" }
+            ];
         },
         crumbs() {
             return [
                 { label: this.$t('nav.home'), to: '/' },
-                { label: this.$t('nav.about'), to: '/about' } 
-            ]
+                { label: this.$t('nav.about'), to: '/about' }
+            ];
         }
-    },
+    }
 };
 </script>

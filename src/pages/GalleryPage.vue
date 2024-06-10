@@ -1,21 +1,25 @@
 <template>
     <div class="min-h-screen bg-gray-100">
         <Header />
-        <h1 class="text-3xl font-bold mt-4 mx-12">{{$t('nav.gallery')}}</h1>
-        <BreadCrumbs :crumbs="crumbs" class="mx-12"/>
+        <h1 class="text-3xl font-bold mt-4 mx-12">{{ $t('nav.gallery') }}</h1>
+        <BreadCrumbs :crumbs="crumbs" class="mx-12" />
         <div class="flex flex-col md:flex-row items-center mx-12 pb-6">
             <div class="md:w-1/2 pr-2">
-                <h2 class="text-2x1 font-semibold">{{ $t('gallery.images_title') }} <fa icon='camera' /></h2>
-                <ImageGallery :images="images"/>
+                <h2 class="text-2x1 font-semibold">{{ $t('gallery.images_title') }}
+                    <fa icon='camera' />
+                </h2>
+                <ImageGallery :images="images" class="h-100" />
             </div>
             <div class="md:w-1/2 pl-2">
-                <h2 class="text-2x1 font-semibold">{{ $t('gallery.videos_title') }} <fa icon='play-circle' /></h2>
-                <VideoGallery :videos="videos"/>
+                <h2 class="text-2x1 font-semibold">{{ $t('gallery.videos_title') }}
+                    <fa icon='play-circle' />
+                </h2>
+                <VideoGallery :videos="videos" class="h-100" />
             </div>
         </div>
     </div>
 </template>
-  
+
 <script>
 import ImageGallery from '@/components/ImageGalleryComponent.vue'
 import Header from '@/components/layout/Header.vue'
@@ -50,7 +54,7 @@ export default {
         crumbs() {
             return [
                 { label: this.$t('nav.home'), to: '/' },
-                { label: this.$t('nav.gallery'), to: '/gallery'}
+                { label: this.$t('nav.gallery'), to: '/gallery' }
             ]
         }
     }

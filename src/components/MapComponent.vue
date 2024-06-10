@@ -1,20 +1,10 @@
 <template>
-    <div class="map-container relative z-10">
-        <div class="map object-cover" ref="map"></div>
+    <div class="map-container relative z-10 h-96">
+        <div class="map object-cover w-full h-full" ref="map"></div>
     </div>
 </template>
 
-<style>
-.map-container {
-    width: 45vw;
-    height: 50vh;
-}
-
-.map {
-    width: 100%;
-    height: 100%;
-}
-</style>
+<style></style>
 
 <script>
 import L from 'leaflet';

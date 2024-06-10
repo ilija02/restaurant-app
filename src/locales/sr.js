@@ -34,7 +34,7 @@ export default {
     subtitle: "Naša ponuda",
     appetizers: "Predjela",
     main: "Glavna jela",
-    'main-courses': "Glavna jela",
+    "main-courses": "Glavna jela",
     desserts: "Deserti",
     all: "Sva jela",
     sort: "Sortiraj po",
@@ -57,10 +57,11 @@ export default {
     title: "O nama",
     description:
       "U našem restoranu posvećeni smo pružanju izuzetnog doživljaja uživanja u hrani našim gostima. Naš tim talentovanih kuvara kombinuje tradicionalne recepte sa inovativnim tehnikama kako bi stvorili jela koja su ukusna i nezaboravna. Ponosni smo što koristimo najfinije sastojke kako bismo osigurali da svako jelo bude vrhunskog kvaliteta. Bez obzira da li dolazite na ručak ili večeru, radujemo se što ćemo vas dočekati i podeliti sa vama našu strast prema sjajnoj hrani.",
+    banners_title: "Ostali važni sajtovi",
   },
   gallery: {
     images_title: "Slike",
-    videos_title: "Videi"
+    videos_title: "Videi",
   },
   myaccount: {
     cart: "Korpa",
@@ -71,6 +72,6 @@ export default {
     confirm: "Potvrdi narudžbinu",
     order: "Narudžbine",
     emptyorders: "Nemate narudžbina",
-    sum: "Suma cena"
-  }
+    sum: "Suma cena",
+  },
 };
