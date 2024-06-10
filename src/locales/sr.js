@@ -10,6 +10,9 @@ export default {
     Desserts: "Dezerti",
   },
   "add to cart": "Dodaj",
+  "remove from cart": "Ukloni",
+  "edit cart": "Izmeni",
+  cancel: "Odustani",
   footer_text:
     "Odsek za softversko inženjerstvo Elektrotehničkog fakulteta Univerziteta u Beogradu",
   nav: {
@@ -42,6 +45,9 @@ export default {
     rating: "Rejting",
     large_portion: "Velika Porcija",
     small_portion: "Mala Porcija",
+    quantity: "Količina",
+    dish: "Jelo",
+    avg: "Prosečna",
   },
   about: {
     address_tel_title: "Lokacija i Kontakt",
@@ -55,5 +61,16 @@ export default {
   gallery: {
     images_title: "Slike",
     videos_title: "Videi"
+  },
+  myaccount: {
+    cart: "Korpa",
+    quantitys: "Količina malih porcija",
+    quantityl: "Količina velikih porcija",
+    price: "Cena",
+    empty: "Vaša korpa je prazna",
+    confirm: "Potvrdi narudžbinu",
+    order: "Narudžbine",
+    emptyorders: "Nemate narudžbina",
+    sum: "Suma cena"
   }
 };

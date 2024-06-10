@@ -19,12 +19,17 @@
                         <span class="text-sm text-gray-300">{{ dish.rating }} out of 5</span>
                     </div>
 
-                    <p class="text-primary-500 font-bold mt-2">${{ dish.price }}</p>
+                    <p v-if="!on_account_page" class="text-primary-500 font-bold mt-2">{{$t('menu.avg')}}: ${{ dish.price }}</p>
+                    <div v-if="on_account_page">
+                        <p class="text-gray-600 font-bold mt-2">{{ $t('myaccount.quantitys') }}: {{ quantitys }}</p>
+                        <p class="text-gray-600 font-bold mt-2">{{ $t('myaccount.quantityl') }}: {{ quantityl }}</p>
+                        <p class="text-lime-700 font-bold mt-2">{{ $t('myaccount.price') }}: ${{ price }}</p>
+                    </div>
                 </div>
                 <button
                     class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors duration-300"
                     @click="addToCart">
-                    <fa :icon="['fas', 'cart-plus']" /> <span class="text-white text-sm pl-2">{{ $t("add to cart")
+                    <fa :icon="['fas', 'cart-plus']" /> <span class="text-white text-sm pl-2">{{ $t("edit cart")
                         }}</span>
                 </button>
             </div>
@@ -37,6 +42,21 @@ export default {
     name: "MenuItem",
     props: {
         dish: {
+            required: true
+        },
+        on_account_page: {
+            required: true
+        },
+        quantitys: {
+            required: false
+        },
+        quantityl: {
+            required: false
+        },
+        price: {
+            required: false
+        },
+        category: {
             required: true
         }
     },
@@ -52,7 +72,7 @@ export default {
     },
     methods: {
         addToCart() {
-            // TODO: Implement add to cart functionality
+            this.$router.push('/dish/' + this.dish.id)
         }
     },
 };

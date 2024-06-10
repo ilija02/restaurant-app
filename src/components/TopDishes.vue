@@ -6,7 +6,7 @@
             </span>
         </h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <MenuItem v-for="dish in topDishes" :key="dish.id" :dish="dish" />
+            <MenuItem v-for="dish in topDishes" :key="dish.id" :dish="dish" :on_account_page="false" :category="false"/>
         </div>
     </div>
 </template>

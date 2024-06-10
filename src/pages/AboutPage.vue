@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div min-h-screen bg-gray-100>
         <Header />
         <BreadCrumbs :crumbs="crumbs" class="mx-12" />
         <div class="flex flex-col md:flex-row items-center mx-12 py-6 border-b-2 border-gray-200 border-dashed">

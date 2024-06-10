@@ -39,7 +39,7 @@
 
             <!-- Menu Items -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <MenuItem v-for="dish in filteredAndSortedDishes" :key="dish.id" :dish="dish" />
+                <MenuItem v-for="dish in filteredAndSortedDishes" :key="dish.id" :dish="dish" :on_account_page="false" :category="selectedCategory"/>
             </div>
             <div v-if="filteredAndSortedDishes.length == 0" class="text-lg flex justify-center">
                 <p>No such dish found</p>
@@ -111,7 +111,7 @@ export default {
                 { label: this.$t('nav.menu'), to: '/menu' } ]
 
             let category = this.$route.params.category
-            if (category) {
+            if (category && category !== 'all') {
                 ret.push({
                     label: this.$t('menu.' + category), to: '/menu/' + category
                 })

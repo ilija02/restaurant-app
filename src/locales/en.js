@@ -11,6 +11,9 @@ export default {
     account: "My Account",
   },
   "add to cart": "Add",
+  "remove from cart": "Remove",
+  "edit cart": "Edit",
+  cancel: "Cancel",
   footer_text:
     "Department of Software Engineering, Faculty of Electrical Engineering, University of Belgrade",
   home: {
@@ -36,6 +39,9 @@ export default {
     rating: "Rating",
     large_portion: "Large Portion",
     small_portion: "Small Portion",
+    quantity: "Quantity",
+    dish: "Dish",
+    avg: "Average",
   },
 
   about: {
@@ -50,5 +56,16 @@ export default {
   gallery: {
     images_title: "Images",
     videos_title: "Videos"
+  },
+  myaccount: {
+    cart: "Cart",
+    quantitys: "Quantity of small portions",
+    quantityl: "Quantity of large portions",
+    price: "Price",
+    empty: "Your cart is empty",
+    confirm: "Confirm order",
+    order: "Orders",
+    emptyorders: "You have no orders",
+    sum: "Sum of Prices"
   }
 };
